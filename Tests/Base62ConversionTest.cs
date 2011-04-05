@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using NUnit.Framework;
+using MyPersonalShortner.Lib;
 
 namespace MyPersonalShortner.Tests
 {
     [TestFixture]
-    class BaseConversionTest
+    class Base62ConversionTest
     {
         private Base10ToN baseConversion;
-        [TestFixtureSetUp]
+        [SetUp]
         public void Initialize()
         {
             this.baseConversion = new Base10ToN(62);
@@ -72,39 +73,6 @@ namespace MyPersonalShortner.Tests
         {
             var result = this.baseConversion.Decode(new int[] { 8, 16 });
             Assert.AreEqual(1000, result);
-        }
-    }
-
-    public class Base10ToN
-    {
-        private int theBase;
-
-        public Base10ToN(int theBase)
-        {
-            this.theBase = theBase;    
-        }
-
-        public IList<int> Encode(int value)
-        {
-            IList<int> encodedValues = new List<int>();
-            if(value >= this.theBase)
-            {
-                var remainder = value % this.theBase;
-                encodedValues.Add(remainder);
-                value = value / this.theBase;
-            }
-            encodedValues.Add(value);
-            return encodedValues;
-        }
-
-        public int Decode(int[] values)
-        {
-            var result = 0;
-            for (var i = values.Length - 1; i >= 0; i--)
-            {
-                result += (values[i] * (int)(Math.Pow(this.theBase, i)));
-            }
-            return result;
         }
     }
 }
