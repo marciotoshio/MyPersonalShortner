@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using NUnit.Framework;
-using MyPersonalShortner.Lib;
+using MyPersonalShortner.Lib.BaseConversion;
 
 namespace MyPersonalShortner.Tests
 {
