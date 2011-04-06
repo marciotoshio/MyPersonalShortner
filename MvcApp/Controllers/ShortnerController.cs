@@ -11,7 +11,7 @@ namespace MyPersonalShortner.MvcApp.Controllers
         //
         // GET: /Shortner/
 
-        public ActionResult Index()
+        public ActionResult Index(string id)
         {
             return View();
         }

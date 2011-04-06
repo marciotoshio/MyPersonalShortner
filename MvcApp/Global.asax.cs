@@ -21,11 +21,13 @@ namespace MvcApp
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            routes.MapRoute(
-                "Default", // Route name
-                "{controller}/{action}/{id}", // URL with parameters
-                new { controller = "Shortner", action = "Index", id = UrlParameter.Optional } // Parameter defaults
-            );
+            routes.MapRoute("Shortner", "{id}", new { controller = "Shortner", action = "Index", id = UrlParameter.Optional });
+
+            //routes.MapRoute(
+            //    "Default", // Route name
+            //    "{controller}/{action}/{id}", // URL with parameters
+            //    new { controller = "Shortner", action = "Index", id = UrlParameter.Optional } // Parameter defaults
+            //);
 
         }
 
