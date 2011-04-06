@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="Base62ConversionTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UrlGeneratorTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
