@@ -21,7 +21,7 @@ namespace MvcApp
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            routes.MapRoute("Shortner", "{id}", new { controller = "Shortner", action = "Index", id = UrlParameter.Optional });
+            routes.MapRoute("Shortner", "{hash}", new { controller = "Shortner", action = "Index", hash = UrlParameter.Optional });
 
             //routes.MapRoute(
             //    "Default", // Route name

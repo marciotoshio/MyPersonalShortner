@@ -43,6 +43,7 @@
     <Compile Include="BaseConversion\Base10ToN.cs" />
     <Compile Include="BaseConversion\IBaseConversion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\ShortnerService.cs" />
     <Compile Include="Url\UrlGenerator.cs" />
   </ItemGroup>
   <ItemGroup />
