@@ -13,7 +13,14 @@ namespace MyPersonalShortner.MvcApp.Controllers
 
         public ActionResult Index(string id)
         {
-            return View();
+            if (string.IsNullOrEmpty(id))
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                return RedirectPermanent(id);   
+            }
         }
 
     }
