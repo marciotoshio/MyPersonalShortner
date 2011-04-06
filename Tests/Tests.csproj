@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Moq">
+      <HintPath>..\packages\Moq.4.0.10827\lib\NET40\Moq.dll</HintPath>
+    </Reference>
     <Reference Include="nunit.framework">
       <HintPath>..\packages\NUnit.2.5.9.10348\lib\nunit.framework.dll</HintPath>
     </Reference>
@@ -42,6 +45,8 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -51,6 +56,7 @@
   <ItemGroup>
     <Compile Include="Base62ConversionTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ShortnerControllerTest.cs" />
     <Compile Include="UrlGeneratorTest.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -60,6 +66,10 @@
     <ProjectReference Include="..\Lib\Lib.csproj">
       <Project>{3D393D09-5ACE-4D7D-A0A1-3E8E93234B0F}</Project>
       <Name>Lib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MvcApp\MvcApp.csproj">
+      <Project>{4350F0F1-8250-4730-BCA9-A9862553622C}</Project>
+      <Name>MvcApp</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
