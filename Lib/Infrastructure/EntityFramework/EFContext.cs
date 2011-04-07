@@ -9,6 +9,7 @@ namespace MyPersonalShortner.Lib.Infrastructure.EntityFramework
             : base("MyPersonalShortner")
         {
             // TODO: Remove In Prod
+            Database.CreateIfNotExists();
             Database.SetInitializer(new DropCreateDatabaseIfModelChanges<EFContext>());
         }
 
