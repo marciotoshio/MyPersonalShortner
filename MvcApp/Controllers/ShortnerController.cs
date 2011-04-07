@@ -16,7 +16,7 @@ namespace MyPersonalShortner.MvcApp.Controllers
         }
 
         //
-        // GET: /Shortner/
+        // GET: /
         public ActionResult Index(string hash)
         {
             if (string.IsNullOrEmpty(hash))
