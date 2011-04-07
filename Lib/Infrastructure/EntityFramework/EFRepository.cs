@@ -27,10 +27,9 @@ namespace MyPersonalShortner.Lib.Infrastructure.EntityFramework
             private set;
         }
 
-        public virtual T Add(T entity)
+        public virtual void Add(T entity)
         {
-            var result = dbset.Add(entity);            
-            return result;
+            dbset.Add(entity);            
         }
 
         public virtual T GetById(int id)

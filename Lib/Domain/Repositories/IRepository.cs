@@ -7,7 +7,7 @@ namespace MyPersonalShortner.Lib.Domain.Repositories
 {
     public interface IRepository<T> where T : class
     {
-        T Add(T entity);
+        void Add(T entity);
         T GetById(int Id);
         void Save();
     }

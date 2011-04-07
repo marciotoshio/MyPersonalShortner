@@ -28,7 +28,7 @@ namespace MyPersonalShortner.Lib.Services
         public LongUrl Add(string url)
         {
             var longUrl = new LongUrl { Url = url };
-            longUrl = this.repository.Add(longUrl);
+            this.repository.Add(longUrl);
             this.repository.Save();
             return longUrl;
         }

@@ -4,5 +4,6 @@ obj
 *.user
 *.suo
 *.log
+*.sdf
 Thumbs.db
 TestResults
