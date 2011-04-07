@@ -5,5 +5,7 @@ obj
 *.suo
 *.log
 *.sdf
+*.Publish.xml
 Thumbs.db
 TestResults
+Deploy
