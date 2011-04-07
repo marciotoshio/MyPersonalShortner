@@ -3,72 +3,71 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using NUnit.Framework;
-using MyPersonalShortner.Lib.BaseConversion;
-using MyPersonalShortner.Lib.Url;
+using MyPersonalShortner.Lib.Domain.UrlConversion;
+using MyPersonalShortner.Lib.Domain.Url;
 
 namespace MyPersonalShortner.Tests
 {
     [TestFixture]
-    public class UrlGeneratorTest
+    public class UrlConversionTest
     {
-        UrlGenerator generator;
+        IUrlConversion urlConversion;
         [SetUp]
         public void Initialize()
         {
             string chars = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-            IBaseConversion baseConversion = new Base10ToN(chars.Length);
-            this.generator = new UrlGenerator(baseConversion, chars);
+            this.urlConversion = new Base10ToHash(chars);
         }
 
         [Test]
         public void with_0_generates_string_0()
         {
-            var result = this.generator.GeneratesFor(0);
+            var result = this.urlConversion.Encode(0);
             Assert.AreEqual("0", result);
         }
         [Test]
         public void with_0_string_returns_0()
         {
-            var result = this.generator.IdFor("0");
+            var result = this.urlConversion.Decode("0");
             Assert.AreEqual(0, result);
         }
 
         [Test]
         public void with_61_generates_string_Z()
         {
-            var result = this.generator.GeneratesFor(61);
+            var result = this.urlConversion.Encode(61);
             Assert.AreEqual("Z", result);
         }
         [Test]
         public void with_Z_string_returns_61()
         {
-            var result = this.generator.IdFor("Z");
+            var result = this.urlConversion.Decode("Z");
             Assert.AreEqual(61, result);
         }
 
         [Test]
         public void with_62_generates_string_01()
         {
-            var result = this.generator.GeneratesFor(62);
+            var result = this.urlConversion.Encode(62);
             Assert.AreEqual("01", result);
         }
         [Test]
         public void with_01_string_returns_62()
         {
-            var result = this.generator.IdFor("01");
+            var result = this.urlConversion.Decode("01");
             Assert.AreEqual(62, result);
         }
 
         [Test]
         public void with_1000_generates_string_8g()
         {
-            var result = this.generator.GeneratesFor(1000);
+            var result = this.urlConversion.Encode(1000);
             Assert.AreEqual("8g", result);
         }
         [Test]
         public void with_8g_string_returns_1000()
         {
-            var result = this.generator.IdFor("8g");
+            var result = this.urlConversion.Decode("8g");
             Assert.AreEqual(1000, result);
         }
     }
