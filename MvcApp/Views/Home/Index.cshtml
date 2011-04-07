@@ -1,6 +1,22 @@
 ﻿@{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "My Personal Shortner";
 }
 
-<h2>My Personal Shortner</h2>
+<h1>My Personal Shortner</h1>
 
+@using (Html.BeginForm())
+{
+    <p>
+    <label>Url: </label> @Html.TextBox("url")
+    </p>
+    <p>
+        <input type="submit" value="Shorten" />
+    </p>
+}
+
+@if (!string.IsNullOrEmpty(ViewBag.ShortenUrl))
+{ 
+    <div id="shorten-url">
+        <h2>ViewBag.ShortenUrl</h2>
+    </div>
+}

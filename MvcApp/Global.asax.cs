@@ -60,7 +60,7 @@ namespace MvcApp
             //Create UnityContainer          
             IUnityContainer container = new UnityContainer()
             .RegisterType<IControllerActivator, CustomControllerActivator>()
-            .RegisterType<IUnitOfWork, UnitOfWork>(new HttpContextLifetimeManager<IUnitOfWork>(), new InjectionConstructor(false))
+            .RegisterType<IUnitOfWork, UnitOfWork>(new HttpContextLifetimeManager<IUnitOfWork>())
             .RegisterType<IShortnerService, ShortnerService>(new HttpContextLifetimeManager<IShortnerService>())
             .RegisterType<ILongUrlRepository, LongUrlRepository>(new HttpContextLifetimeManager<ILongUrlRepository>())
             .RegisterType<IUrlConversion, Base10ToHash>(new HttpContextLifetimeManager<IUrlConversion>(), new InjectionConstructor(MvcApplication.CharsForHash));
