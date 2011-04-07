@@ -6,15 +6,12 @@ namespace MyPersonalShortner.Lib.Infrastructure.EntityFramework
     public class EFContext : DbContext
     {
         public EFContext()
-            : base("MyPersonalShortner") 
+            : base("MyPersonalShortner")
         {
+            // TODO: Remove In Prod
+            Database.SetInitializer(new DropCreateDatabaseIfModelChanges<EFContext>());
         }
 
         public DbSet<LongUrl> Urls { get; set; }
-
-        public virtual void Commit()
-        {
-            base.SaveChanges();
-        }
-    }
+    }    
 }

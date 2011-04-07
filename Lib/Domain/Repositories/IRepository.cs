@@ -9,5 +9,6 @@ namespace MyPersonalShortner.Lib.Domain.Repositories
     {
         T Add(T entity);
         T GetById(int Id);
+        void Save();
     }
 }

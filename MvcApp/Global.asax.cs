@@ -10,7 +10,6 @@ using MyPersonalShortner.MvcApp.IoC;
 using MyPersonalShortner.Lib.Domain.Repositories;
 using MyPersonalShortner.Lib.Infrastructure.EntityFramework.Repositories;
 using MyPersonalShortner.MvcApp;
-using MyPersonalShortner.Lib.Infrastructure.Data;
 using MyPersonalShortner.Lib.Infrastructure.EntityFramework;
 using MyPersonalShortner.Lib.Domain.UrlConversion;
 
@@ -60,7 +59,6 @@ namespace MvcApp
             //Create UnityContainer          
             IUnityContainer container = new UnityContainer()
             .RegisterType<IControllerActivator, CustomControllerActivator>()
-            .RegisterType<IUnitOfWork, UnitOfWork>(new HttpContextLifetimeManager<IUnitOfWork>())
             .RegisterType<IShortnerService, ShortnerService>(new HttpContextLifetimeManager<IShortnerService>())
             .RegisterType<ILongUrlRepository, LongUrlRepository>(new HttpContextLifetimeManager<ILongUrlRepository>())
             .RegisterType<IUrlConversion, Base10ToHash>(new HttpContextLifetimeManager<IUrlConversion>(), new InjectionConstructor(MvcApplication.CharsForHash));

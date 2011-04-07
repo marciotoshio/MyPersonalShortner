@@ -26,8 +26,8 @@ namespace MyPersonalShortner.MvcApp.Controllers
         public ActionResult Index(FormCollection formsCollection)
         {
             var url = formsCollection["url"];
-            var hash = this.service.Shorten(url);
-            ViewBag.ShortenUrl = hash;
+            var longUrl = this.service.Add(url);
+            ViewBag.ShortenUrl = this.service.Shorten(longUrl.Id);
             return View();
         }
     }
