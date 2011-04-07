@@ -8,7 +8,14 @@ namespace MyPersonalShortner.Lib.Infrastructure.EntityFramework
         public EFContext()
             : base("MyPersonalShortner")
         {
-            Database.SetInitializer(new MyPersonalSHortnerInitializer());
+            if (Database.CreateIfNotExists())
+            {
+                Database.SetInitializer(new MyPersonalSHortnerInitializer());
+            }
+            else
+            {
+                Database.SetInitializer<EFContext>(null);
+            }
         }
 
         public DbSet<LongUrl> Urls { get; set; }
