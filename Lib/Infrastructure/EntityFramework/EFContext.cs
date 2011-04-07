@@ -8,11 +8,20 @@ namespace MyPersonalShortner.Lib.Infrastructure.EntityFramework
         public EFContext()
             : base("MyPersonalShortner")
         {
-            // TODO: Remove In Prod
-            Database.CreateIfNotExists();
-            Database.SetInitializer(new DropCreateDatabaseIfModelChanges<EFContext>());
+            Database.SetInitializer(new MyPersonalSHortnerInitializer());
         }
 
         public DbSet<LongUrl> Urls { get; set; }
+
+        private class MyPersonalSHortnerInitializer : DropCreateDatabaseIfModelChanges<EFContext>
+        {
+            protected override void Seed(EFContext context)
+            {
+                context.Urls.Add(new LongUrl { Url = "https://github.com/marciotoshio/MyPersonalShortner" });
+                context.SaveChanges();
+                base.Seed(context);
+            }
+        
+        }
     }    
 }
