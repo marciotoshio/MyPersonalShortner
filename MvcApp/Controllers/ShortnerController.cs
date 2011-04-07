@@ -19,15 +19,8 @@ namespace MyPersonalShortner.MvcApp.Controllers
         // GET: /
         public ActionResult Index(string hash)
         {
-            if (string.IsNullOrEmpty(hash))
-            {
-                return RedirectToAction("Index", "Home");
-            }
-            else
-            {
-                var url = service.Expand(hash);
-                return RedirectPermanent(url);   
-            }
+            var url = service.Expand(hash);
+            return RedirectPermanent(url);
         }
     }
 }

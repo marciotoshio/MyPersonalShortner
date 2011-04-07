@@ -15,18 +15,10 @@ namespace MyPersonalShortner.Tests
     public class ShortnerControllerTest
     {
         [Test]
-        public void index_without_parameters_redirects_to_home_index()
-        {
-            var controller = GetController();
-            var result = controller.Index(null);
-            Assert.IsInstanceOf<RedirectToRouteResult>(result);
-        }
-
-        [Test]
         public void index_with_parameters_redirects_permanently()
         {
             var controller = GetController();
-            var result = controller.Index("0");
+            var result = controller.Index("test");
             Assert.IsInstanceOf<RedirectResult>(result);
             Assert.IsTrue(((RedirectResult)result).Permanent);
         }
