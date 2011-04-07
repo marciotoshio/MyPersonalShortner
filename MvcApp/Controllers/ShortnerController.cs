@@ -20,6 +20,7 @@ namespace MyPersonalShortner.MvcApp.Controllers
         public ActionResult Index(string hash)
         {
             var url = service.Expand(hash);
+            Response.StatusCode = 301;
             return RedirectPermanent(url);
         }
     }

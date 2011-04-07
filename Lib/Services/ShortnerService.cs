@@ -10,8 +10,7 @@ namespace MyPersonalShortner.Lib.Services
 {
     public interface IShortnerService
     {
-        LongUrl Add(string url);
-        string Shorten(int id);
+        string Shorten(string url);
         string Expand(string hash);
     }
 
@@ -24,24 +23,31 @@ namespace MyPersonalShortner.Lib.Services
             this.repository = repository;
             this.urlConversion = urlConversion;
         }
-
-        public LongUrl Add(string url)
+        
+        public string Shorten(string url)
+        {
+            var id = Add(url);
+            var hash = this.urlConversion.Encode(id);
+            return hash;
+        }
+        private int Add(string url)
         {
             var longUrl = new LongUrl { Url = url };
             this.repository.Add(longUrl);
             this.repository.Save();
-            return longUrl;
-        }
-
-        public string Shorten(int id)
-        {
-            var hash = this.urlConversion.Encode(id);
-            return hash;
+            return longUrl.Id;
         }
 
         public string Expand(string hash)
         {
-            throw new NotImplementedException();
+            var id = this.urlConversion.Decode(hash);
+            var url = Get(id);
+            return url;
+        }
+        private string Get(int id)
+        {
+            var longUrl = this.repository.GetById(id);
+            return longUrl.Url;
         }
     }
 }

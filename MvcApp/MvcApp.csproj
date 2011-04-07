@@ -85,6 +85,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\MyPersonalShortner.sdf" />
     <Content Include="Content\style.css" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\common.js" />
@@ -103,7 +104,6 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="Content\themes\base\" />
     <Folder Include="Models\" />
   </ItemGroup>

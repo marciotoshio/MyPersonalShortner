@@ -28,8 +28,7 @@ namespace MyPersonalShortner.Tests
         private HomeController GetController()
         {
             var mockService = new Mock<IShortnerService>();
-            mockService.Setup(s => s.Add(It.IsAny<string>())).Returns(new LongUrl { Id = 1, Url = "8g" });
-            mockService.Setup(s => s.Shorten(It.IsAny<int>())).Returns("8g");
+            mockService.Setup(s => s.Shorten(It.IsAny<string>())).Returns("8g");
 
             var controller = new HomeController(mockService.Object);
             return controller;
