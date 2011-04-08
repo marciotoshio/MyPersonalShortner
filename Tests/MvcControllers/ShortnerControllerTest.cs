@@ -9,7 +9,7 @@ using Moq;
 using System.Web;
 using MyPersonalShortner.Lib.Services;
 
-namespace MyPersonalShortner.Tests
+namespace MyPersonalShortner.Tests.MvcControllers
 {
     [TestFixture]
     public class ShortnerControllerTest

@@ -1,27 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Data.Entity;
+using System.Data.Entity.Validation;
 using System.Linq;
-using System.Text;
-using System.Data.Entity;
+using MyPersonalShortner.Lib.CustomExceptions;
 
 namespace MyPersonalShortner.Lib.Infrastructure.EntityFramework
 {
-    public abstract class EFRepository<T> where T : class
+    public abstract class EfRepository<T> where T : class
     {
         private readonly IDbSet<T> dbset;
-        protected EFRepository()
+        protected EfRepository()
         {
-            DatabaseFactory = new EFDatabaseFactory();
+            DatabaseFactory = new EfDatabaseFactory();
             dbset = DataContext.Set<T>();
         }
 
-        private EFContext dataContext;
-        protected EFContext DataContext
+        private EfContext dataContext;
+        protected EfContext DataContext
         {
             get { return dataContext ?? (dataContext = DatabaseFactory.Get()); }
         }
 
-        protected EFDatabaseFactory DatabaseFactory
+        protected EfDatabaseFactory DatabaseFactory
         {
             get;
             private set;
@@ -39,7 +38,17 @@ namespace MyPersonalShortner.Lib.Infrastructure.EntityFramework
 
         public virtual void Save()
         {
-            DataContext.SaveChanges();
+            try
+            {
+                DataContext.SaveChanges();
+            }
+            catch (DbEntityValidationException dbEx)
+            {
+                var errors = (from validationErrors in dbEx.EntityValidationErrors
+                              from validationError in validationErrors.ValidationErrors
+                              select string.Format("{0} is invalid: {1}", validationError.PropertyName, validationError.ErrorMessage)).ToList();
+                throw new ShortnerValidationException(errors);
+            }
         }
     }
 }

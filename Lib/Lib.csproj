@@ -45,6 +45,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomExceptions\ShortnerValidationException.cs" />
+    <Compile Include="Domain\CustomValidators\UrlAttribute.cs" />
     <Compile Include="Domain\UrlConversion\Base10ToHash.cs" />
     <Compile Include="Domain\UrlConversion\IUrlConversion.cs" />
     <Compile Include="Domain\Repositories\ILongUrlRepository.cs" />

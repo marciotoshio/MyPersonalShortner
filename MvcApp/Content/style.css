@@ -81,12 +81,18 @@ a:hover { color: #036; }
  * Author: @marciotoshio
  */
 
+body
+{
+	background-color: #eef;
+}
+ 
 h1.title
 {
     margin: 30px auto;
     width: 500px;
     text-align: center;
     font-size: 50pt;
+	color: #fcb;
 }
 
 #main > form 
@@ -105,7 +111,7 @@ div#shorten-url
     margin: 30px;
     text-align: center;
     font-size: 50pt;
-    color: lime;
+    color: #afa;
 }
 
 

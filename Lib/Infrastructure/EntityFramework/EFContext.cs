@@ -3,9 +3,9 @@ using MyPersonalShortner.Lib.Domain.Url;
 
 namespace MyPersonalShortner.Lib.Infrastructure.EntityFramework
 {
-    public class EFContext : DbContext
+    public class EfContext : DbContext
     {
-        public EFContext()
+        public EfContext()
             : base("MyPersonalShortner")
         {
             try
@@ -15,15 +15,15 @@ namespace MyPersonalShortner.Lib.Infrastructure.EntityFramework
             }
             catch
             {
-                Database.SetInitializer<EFContext>(null);
+                Database.SetInitializer<EfContext>(null);
             }
         }
 
         public DbSet<LongUrl> Urls { get; set; }
 
-        private class MyPersonalSHortnerInitializer : DropCreateDatabaseIfModelChanges<EFContext>
+        private class MyPersonalSHortnerInitializer : DropCreateDatabaseIfModelChanges<EfContext>
         {
-            protected override void Seed(EFContext context)
+            protected override void Seed(EfContext context)
             {
                 context.Urls.Add(new LongUrl { Url = "https://github.com/marciotoshio/MyPersonalShortner" });
                 context.SaveChanges();

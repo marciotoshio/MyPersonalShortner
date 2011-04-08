@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Web;
 using Microsoft.Practices.Unity;
 using System.Web.Mvc;
@@ -9,7 +8,7 @@ namespace MyPersonalShortner.MvcApp.IoC
 {
     public class UnityDependencyResolver : IDependencyResolver
     {
-        IUnityContainer container;
+        readonly IUnityContainer container;
         public UnityDependencyResolver(IUnityContainer container)
         {
             this.container = container;
@@ -30,11 +29,11 @@ namespace MyPersonalShortner.MvcApp.IoC
                 {
                     w.WriteLine("============== InnerException 1 ==============");
                     w.WriteLine(string.Format("{0} :: {1} :: {2}", DateTime.Now, ex.InnerException.Message, ex.InnerException.StackTrace));
-                }
-                if (ex.InnerException.InnerException != null)
-                {
-                    w.WriteLine("============== InnerException 2 ==============");
-                    w.WriteLine(string.Format("{0} :: {1} :: {2}", DateTime.Now, ex.InnerException.InnerException.Message, ex.InnerException.InnerException.StackTrace));
+                    if (ex.InnerException.InnerException != null)
+                    {
+                        w.WriteLine("============== InnerException 2 ==============");
+                        w.WriteLine(string.Format("{0} :: {1} :: {2}", DateTime.Now, ex.InnerException.InnerException.Message, ex.InnerException.InnerException.StackTrace));
+                    }
                 }
                 w.Close();
                 return null;

@@ -6,7 +6,7 @@ using NUnit.Framework;
 using MyPersonalShortner.Lib.Domain.UrlConversion;
 using MyPersonalShortner.Lib.Domain.Url;
 
-namespace MyPersonalShortner.Tests
+namespace MyPersonalShortner.Tests.Domain
 {
     [TestFixture]
     public class UrlConversionTest

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Runtime.Serialization;
+﻿using System.Runtime.Serialization;
 
 namespace MyPersonalShortner.MvcApp.Areas.Api.DTO
 {
@@ -11,5 +7,7 @@ namespace MyPersonalShortner.MvcApp.Areas.Api.DTO
     {
         [DataMember(Name="success")]
         public bool Success { get; set; }
+        [DataMember(Name = "message")]
+        public string Message { get; set; }
     }
 }

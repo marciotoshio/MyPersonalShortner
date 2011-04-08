@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace MyPersonalShortner.Lib.Domain.Repositories
+﻿namespace MyPersonalShortner.Lib.Domain.Repositories
 {
     public interface IRepository<T> where T : class
     {
         void Add(T entity);
-        T GetById(int Id);
+        T GetById(int id);
         void Save();
     }
 }

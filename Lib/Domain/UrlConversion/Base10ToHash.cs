@@ -1,27 +1,26 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace MyPersonalShortner.Lib.Domain.UrlConversion
 {
     public class Base10ToHash : IUrlConversion 
     {
-        private string chars;
-        private int theBase;
+        private readonly string chars;
+        private readonly int theBase;
 
         public Base10ToHash(string chars)
         {
             this.chars = chars;
-            this.theBase = chars.Length;
+            theBase = chars.Length;
         }
 
         public string Encode(int value)
         {
-            string hash = "";
-            if (value >= this.theBase)
+            var hash = "";
+            if (value >= theBase)
             {
-                var remainder = value % this.theBase;
+                var remainder = value % theBase;
                 hash += chars[remainder];
-                value = value / this.theBase;
+                value = value / theBase;
             }
             hash += chars[value];
             return hash;
@@ -32,7 +31,7 @@ namespace MyPersonalShortner.Lib.Domain.UrlConversion
             var result = 0;
             for (var i = hash.Length - 1; i >= 0; i--)
             {
-                result += (chars.IndexOf(hash[i]) * (int)(Math.Pow(this.theBase, i)));
+                result += (chars.IndexOf(hash[i]) * (int)(Math.Pow(theBase, i)));
             }
             return result;
         }

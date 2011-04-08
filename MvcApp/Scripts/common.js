@@ -7,5 +7,10 @@
             $('#shorten-url h2').text('error');
         }
         $('#shorten-url').fadeIn();
+    },
+
+    HandleShortenFailure: function (data) {
+        $('#shorten-url h2').text(data.responseText);
+        $('#shorten-url').fadeIn();
     }
 };

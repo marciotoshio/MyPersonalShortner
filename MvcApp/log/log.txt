@@ -1,0 +1,20 @@
+============== Exception ==============
+08/04/2011 16:12:31 :: Resolution of the dependency failed, type = "System.Web.Mvc.ModelMetadataProvider", name = "(none)".
+Exception occurred while: while resolving.
+Exception is: InvalidOperationException - The type ModelMetadataProvider cannot be constructed. You must configure the container to supply this value.
+-----------------------------------------------
+At the time of the exception, the container was:
+
+  Resolving System.Web.Mvc.ModelMetadataProvider,(none)
+ ::    at Microsoft.Practices.Unity.UnityContainer.DoBuildUp(Type t, Object existing, String name, IEnumerable`1 resolverOverrides)
+   at Microsoft.Practices.Unity.UnityContainer.Resolve(Type t, String name, ResolverOverride[] resolverOverrides)
+   at Microsoft.Practices.Unity.UnityContainerExtensions.Resolve(IUnityContainer container, Type t, ResolverOverride[] overrides)
+   at MyPersonalShortner.MvcApp.IoC.UnityDependencyResolver.GetService(Type serviceType) in C:\Users\k4cid\documents\visual studio 2010\Projects\MarcioToshio\MyPersonalShortner\MvcApp\IoC\UnityDependencyResolver.cs:line 22
+============== InnerException 1 ==============
+08/04/2011 16:12:31 :: The type ModelMetadataProvider cannot be constructed. You must configure the container to supply this value. ::    at Microsoft.Practices.ObjectBuilder2.DynamicMethodConstructorStrategy.GuardTypeIsNonPrimitive(IBuilderContext context, SelectedConstructor selectedConstructor)
+   at Microsoft.Practices.ObjectBuilder2.DynamicMethodConstructorStrategy.PreBuildUp(IBuilderContext context)
+   at Microsoft.Practices.ObjectBuilder2.StrategyChain.ExecuteBuildUp(IBuilderContext context)
+   at Microsoft.Practices.ObjectBuilder2.DynamicMethodBuildPlanCreatorPolicy.CreatePlan(IBuilderContext context, NamedTypeBuildKey buildKey)
+   at Microsoft.Practices.ObjectBuilder2.BuildPlanStrategy.PreBuildUp(IBuilderContext context)
+   at Microsoft.Practices.ObjectBuilder2.StrategyChain.ExecuteBuildUp(IBuilderContext context)
+   at Microsoft.Practices.Unity.UnityContainer.DoBuildUp(Type t, Object existing, String name, IEnumerable`1 resolverOverrides)

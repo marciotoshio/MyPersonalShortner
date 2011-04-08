@@ -1,11 +1,11 @@
 ﻿namespace MyPersonalShortner.Lib.Infrastructure.EntityFramework
 {
-    public class EFDatabaseFactory : Disposable
+    public class EfDatabaseFactory : Disposable
     {
-        private EFContext dataContext;
-        public EFContext Get()
+        private EfContext dataContext;
+        public EfContext Get()
         {
-            return dataContext ?? (dataContext = new EFContext());
+            return dataContext ?? (dataContext = new EfContext());
         }
         protected override void DisposeCore()
         {

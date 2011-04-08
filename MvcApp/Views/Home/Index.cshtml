@@ -5,10 +5,14 @@
 <h1 class="title">My Personal Shortner</h1>
 
 @using (Ajax.BeginForm("Shorten", "Main", new { area = "Api" },
-    new AjaxOptions { HttpMethod = "POST", OnSuccess = "common.HandleShortenSuccess" }))
+    new AjaxOptions { HttpMethod = "POST", 
+        OnSuccess = "common.HandleShortenSuccess",
+        OnFailure = "common.HandleShortenFailure"
+    }))
 {
     <p>
-        <label for="url">Url: </label> @Html.TextBox("url") <input type="submit" value="Shorten" />
+        <label for="url">Url: </label> @Html.TextBox("url") <input type="submit" value="Shorten" /><br />
+        @Html.ValidationMessage("LongUrl")
     </p>
 }
 

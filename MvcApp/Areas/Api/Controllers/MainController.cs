@@ -1,16 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using MyPersonalShortner.Lib.Services;
 using MyPersonalShortner.MvcApp.Areas.Api.DTO;
+using MyPersonalShortner.Lib.CustomExceptions;
 
 namespace MyPersonalShortner.MvcApp.Areas.Api.Controllers
 {
     public class MainController : Controller
     {
-        private IShortnerService service;
+        private readonly IShortnerService service;
         public MainController(IShortnerService service)
         {
             this.service = service;
@@ -24,15 +22,38 @@ namespace MyPersonalShortner.MvcApp.Areas.Api.Controllers
         [HttpPost]
         public JsonResult Shorten()
         {
-            var url = Request["url"];
-            var hash = this.service.Shorten(url);
-            
-            return Json(new ApiShortenResult
+            try
             {
-                Success = true,
-                Hash = hash,
-                LongUrl = url
-            }, JsonRequestBehavior.AllowGet);
+                var url = Request["url"];
+                var hash = service.Shorten(url);
+                var result = new ApiShortenResult
+                {
+                    Success = true,
+                    Message = "success",
+                    Hash = hash,
+                    LongUrl = url
+                };
+                return Json(result, JsonRequestBehavior.AllowGet);
+            }
+            catch (ShortnerValidationException ex)
+            {
+                var validationResult = new ApiErrorResult { 
+                    Success = false,
+                    Errors = ex.Errors,
+                    Message = ex.Message
+                };
+                Response.StatusCode = 500;
+                return Json(validationResult);
+            }
+            catch (Exception ex)
+            {
+                var exResult = new ApiResult {
+                    Success = false,
+                    Message = ex.Message
+                };
+                Response.StatusCode = 500;
+                return Json(exResult);
+            }
         }
     }
 }
