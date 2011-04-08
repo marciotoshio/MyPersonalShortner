@@ -35,3 +35,7 @@ PRIMARY KEY CLUSTERED
 GO
 
 insert into [dbo].[LongUrls]([Url]) values('https://github.com/marciotoshio/MyPersonalShortner')
+
+/*** RESET DATA ***/
+-- DELETE FROM LongUrls WHERE Id > 1
+-- DBCC CHECKIDENT('LongUrls', RESEED, 1)
