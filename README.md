@@ -3,13 +3,13 @@ My Personal Shortner
 
 Dependencies
 ------------
-	*.NET Framework 4.0
-	*ASP.NET MVC 3
-	*SQL Server Compact 4.0 (for test with embedded database)
-	*EntityFramework 4.1.10311.0
-	*Unity 2.0
-	*NUnit 2.5.9.10348
-	*Moq 4.0.10827
+*.NET Framework 4.0
+*ASP.NET MVC 3
+*SQL Server Compact 4.0 (for test with embedded database)
+*EntityFramework 4.1.10311.0
+*Unity 2.0
+*NUnit 2.5.9.10348
+*Moq 4.0.10827
 
 Troubleshoot
 ------------
