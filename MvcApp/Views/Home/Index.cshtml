@@ -2,21 +2,16 @@
     ViewBag.Title = "My Personal Shortner";
 }
 
-<h1>My Personal Shortner</h1>
+<h1 class="title">My Personal Shortner</h1>
 
-@using (Html.BeginForm())
+@using (Ajax.BeginForm("Shorten", "Main", new { area = "Api" },
+    new AjaxOptions { HttpMethod = "POST", OnSuccess = "common.HandleShortenSuccess" }))
 {
     <p>
-    <label>Url: </label> @Html.TextBox("url")
-    </p>
-    <p>
-        <input type="submit" value="Shorten" />
+        <label for="url">Url: </label> @Html.TextBox("url") <input type="submit" value="Shorten" />
     </p>
 }
 
-@if (!string.IsNullOrEmpty(ViewBag.ShortenUrl))
-{ 
-    <div id="shorten-url">
-        <h2>http://tosh.io/@ViewBag.ShortenUrl</h2>
-    </div>
-}
+<div id="shorten-url" style="display:none">
+    <h2></h2>
+</div>
