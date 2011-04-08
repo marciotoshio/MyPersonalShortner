@@ -81,7 +81,32 @@ a:hover { color: #036; }
  * Author: @marciotoshio
  */
 
+h1.title
+{
+    margin: 30px auto;
+    width: 500px;
+    text-align: center;
+    font-size: 50pt;
+}
 
+#main > form 
+{
+    text-align: center;
+    font-size: 18pt;    
+}
+
+#main > form input[type="text"]
+{
+    width: 500px;    
+}
+
+div#shorten-url
+{
+    margin: 30px;
+    text-align: center;
+    font-size: 50pt;
+    color: lime;
+}
 
 
 
