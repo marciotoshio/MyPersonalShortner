@@ -8,11 +8,12 @@ namespace MyPersonalShortner.Lib.Infrastructure.EntityFramework
         public EFContext()
             : base("MyPersonalShortner")
         {
-            if (Database.CreateIfNotExists())
+            try
             {
+                Database.CreateIfNotExists();
                 Database.SetInitializer(new MyPersonalSHortnerInitializer());
             }
-            else
+            catch
             {
                 Database.SetInitializer<EFContext>(null);
             }

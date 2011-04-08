@@ -53,7 +53,9 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Data.SqlServerCe, Version=4.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
-    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Runtime.Serialization">
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
@@ -112,9 +114,6 @@
     <Content Include="Global.asax" />
     <Content Include="Scripts\common.js" />
     <Content Include="Scripts\libs\jquery-1.5.2.min.js" />
-    <Content Include="Scripts\libs\jquery.unobtrusive-ajax.min.js" />
-    <Content Include="Scripts\libs\MicrosoftAjax.js" />
-    <Content Include="Scripts\libs\MicrosoftMvcAjax.js" />
     <Content Include="Scripts\libs\modernizr-1.7.min.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -133,6 +132,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\themes\base\" />
+    <Folder Include="log\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shortner\Index.cshtml" />
