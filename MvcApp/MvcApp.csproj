@@ -135,9 +135,6 @@
     <Folder Include="log\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Shortner\Index.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\Lib\Lib.csproj">
       <Project>{3D393D09-5ACE-4D7D-A0A1-3E8E93234B0F}</Project>
       <Name>Lib</Name>

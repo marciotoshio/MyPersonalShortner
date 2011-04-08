@@ -88,11 +88,28 @@ body
  
 h1.title
 {
+    font-family: 'Bangers', serif;
     margin: 30px auto;
     width: 500px;
     text-align: center;
     font-size: 50pt;
 	color: #fcb;
+	text-shadow: 4px 4px 4px #aaa;
+}
+
+footer
+{
+    border-top: 1px solid #CCC;
+    margin-top: 100px;
+    padding: 10px;
+    text-align: right;    
+}
+
+.rounded
+{
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
 }
 
 #main > form 
@@ -103,7 +120,9 @@ h1.title
 
 #main > form input[type="text"]
 {
-    width: 500px;    
+    width: 700px;
+    border: 1px solid #CCC;
+    padding: 5px
 }
 
 div#shorten-url
@@ -112,6 +131,27 @@ div#shorten-url
     text-align: center;
     font-size: 50pt;
     color: #afa;
+}
+
+div#shorten-message
+{
+    border-width: 1px;
+    border-style: solid;
+    padding: 5px;
+    text-align: center;
+    margin: 10px 200px;    
+}
+
+div#shorten-message ul
+{
+    list-style: none;
+    margin: 10px 0;    
+}
+
+div#shorten-message.error
+{
+    border-color: #f00;
+    background-color: #faa;
 }
 
 

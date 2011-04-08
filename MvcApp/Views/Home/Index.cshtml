@@ -2,7 +2,9 @@
     ViewBag.Title = "My Personal Shortner";
 }
 
-<h1 class="title">My Personal Shortner</h1>
+@section Header {
+    <h1 class="title">My Personal Shortner</h1>
+}
 
 @using (Ajax.BeginForm("Shorten", "Main", new { area = "Api" },
     new AjaxOptions { HttpMethod = "POST", 
@@ -11,11 +13,16 @@
     }))
 {
     <p>
-        <label for="url">Url: </label> @Html.TextBox("url") <input type="submit" value="Shorten" /><br />
+        <label for="url">Url: </label> @Html.TextBox("url", "", new { @class = "rounded" }) <input type="submit" value="Shorten" /><br />
         @Html.ValidationMessage("LongUrl")
     </p>
 }
 
 <div id="shorten-url" style="display:none">
     <h2></h2>
+</div>
+
+<div id="shorten-message" class="rounded" style="display:none">
+    <h2></h2>
+    <ul></ul>
 </div>

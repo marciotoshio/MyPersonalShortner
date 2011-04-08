@@ -7,7 +7,7 @@ namespace MyPersonalShortner.Lib.Domain.Url
     {
         public int Id { get; set; }
         [Required]
-        [Url]
+        [Url(ErrorMessage = "The url is invalid.")]
         public string Url { get; set; }
     }
 }

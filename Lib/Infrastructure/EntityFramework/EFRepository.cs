@@ -46,7 +46,7 @@ namespace MyPersonalShortner.Lib.Infrastructure.EntityFramework
             {
                 var errors = (from validationErrors in dbEx.EntityValidationErrors
                               from validationError in validationErrors.ValidationErrors
-                              select string.Format("{0} is invalid: {1}", validationError.PropertyName, validationError.ErrorMessage)).ToList();
+                              select validationError.ErrorMessage).ToList();
                 throw new ShortnerValidationException(errors);
             }
         }

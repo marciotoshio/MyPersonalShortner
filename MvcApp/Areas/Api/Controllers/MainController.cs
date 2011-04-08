@@ -25,7 +25,7 @@ namespace MyPersonalShortner.MvcApp.Areas.Api.Controllers
             try
             {
                 var url = Request["url"];
-                var hash = service.Shorten(url);
+                var hash = service.Shorten(url.Trim());
                 var result = new ApiShortenResult
                 {
                     Success = true,
