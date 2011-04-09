@@ -11,7 +11,7 @@ Dependencies
 * NUnit 2.5.9.10348
 * Moq 4.0.10827
 
-Troubleshoot
+Troubleshooting
 ------------
 The ASP.Net MVC 3 project is using IIS Express as develop web server, if you have trouble with the project loading edit the csproj find any reference to UseIISExpress and set it to false.
 
