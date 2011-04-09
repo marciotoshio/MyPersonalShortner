@@ -32,6 +32,8 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <ExcludeGeneratedDebugSymbol>true</ExcludeGeneratedDebugSymbol>
+    <ExcludeApp_Data>true</ExcludeApp_Data>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Practices.ServiceLocation">
@@ -111,7 +113,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\style.css" />
+    <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="humans.txt" />
+    <Content Include="robots.txt" />
     <Content Include="Scripts\common.js" />
     <Content Include="Scripts\libs\jquery-1.5.2.min.js" />
     <Content Include="Scripts\libs\modernizr-1.7.min.js" />
@@ -139,9 +144,6 @@
       <Project>{3D393D09-5ACE-4D7D-A0A1-3E8E93234B0F}</Project>
       <Name>Lib</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Home\Index.cshtml" />
