@@ -154,6 +154,10 @@ div#shorten-message.error
     background-color: #faa;
 }
 
+#urlnotfound-message
+{
+    text-align: center;
+}
 
 
 
