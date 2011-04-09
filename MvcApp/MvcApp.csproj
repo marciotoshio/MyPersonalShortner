@@ -106,6 +106,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\AppHelper.cs" />
     <Compile Include="IoC\CustomControllerActivator.cs" />
     <Compile Include="IoC\HttpContextLifetimeManager.cs" />
     <Compile Include="IoC\UnityDependencyResolver.cs" />
