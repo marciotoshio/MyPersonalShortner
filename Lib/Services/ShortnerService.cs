@@ -32,6 +32,7 @@ namespace MyPersonalShortner.Lib.Services
             var customUrl = new CustomUrl { Url = url, CustomPart = customPart};
             customUrlRepository.Add(customUrl);
             customUrlRepository.Save();
+            customUrlsCache.Add(customPart, url);
         }
 
         public string Shorten(string url)
@@ -43,24 +44,19 @@ namespace MyPersonalShortner.Lib.Services
         private int Add(string url)
         {
             var longUrl = new LongUrl { Url = url };
-            longUrlRepository.Add(longUrl);
+            longUrl = longUrlRepository.Add(longUrl);
             longUrlRepository.Save();
             return longUrl.Id;
         }
 
         public string Expand(string hash)
         {
-            string url;
-            if (!customUrlsCache.ContainsKey(hash))
+            if (customUrlsCache.ContainsKey(hash))
             {
-                var id = urlConversion.Decode(hash);
-                url = Get(id);
+                return customUrlsCache[hash].ToString();
             }
-            else
-            {
-                url = customUrlsCache[hash].ToString();
-            }
-            return url;
+            var id = urlConversion.Decode(hash);
+            return Get(id);
         }
         private string Get(int id)
         {

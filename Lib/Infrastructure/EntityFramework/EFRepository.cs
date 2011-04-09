@@ -9,11 +9,11 @@ namespace MyPersonalShortner.Lib.Infrastructure.EntityFramework
 {
     public abstract class EfRepository<T> where T : class
     {
-        protected readonly IDbSet<T> Dbset;
+        private readonly IDbSet<T> dbset;
         protected EfRepository()
         {
             DatabaseFactory = new EfDatabaseFactory();
-            Dbset = DataContext.Set<T>();
+            dbset = DataContext.Set<T>();
         }
 
         private EfContext dataContext;
@@ -28,14 +28,15 @@ namespace MyPersonalShortner.Lib.Infrastructure.EntityFramework
             private set;
         }
 
-        public virtual void Add(T entity)
+        public virtual T Add(T entity)
         {
-            Dbset.Add(entity);            
+            var newEntity = dbset.Add(entity);
+            return newEntity;
         }
 
         public virtual T GetById(int id)
         {
-            var entity = Dbset.Find(id);
+            var entity = dbset.Find(id);
             if(entity == null)
             {
                 throw new ArgumentOutOfRangeException("Id", id, "Url not found.");
@@ -43,9 +44,14 @@ namespace MyPersonalShortner.Lib.Infrastructure.EntityFramework
             return entity;
         }
 
+        public T Get(Func<T, bool> where)
+        {
+            return dbset.Where(where).FirstOrDefault<T>();
+        }
+
         public virtual IEnumerable<T> GetAll()
         {
-            return Dbset.ToList();
+            return dbset.ToList();
         }
 
         public virtual void Save()
