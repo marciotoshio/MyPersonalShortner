@@ -6,6 +6,7 @@ obj
 *.log
 *.sdf
 *.Publish.xml
+log.txt
 Thumbs.db
 TestResults
 Deploy
