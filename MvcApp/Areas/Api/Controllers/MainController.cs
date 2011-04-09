@@ -43,6 +43,7 @@ namespace MyPersonalShortner.MvcApp.Areas.Api.Controllers
                     Message = ex.Message
                 };
                 Response.StatusCode = 500;
+                Response.TrySkipIisCustomErrors = true;
                 return Json(validationResult);
             }
             catch (Exception ex)
@@ -52,6 +53,7 @@ namespace MyPersonalShortner.MvcApp.Areas.Api.Controllers
                     Message = ex.Message
                 };
                 Response.StatusCode = 500;
+                Response.TrySkipIisCustomErrors = true;
                 return Json(exResult);
             }
         }
