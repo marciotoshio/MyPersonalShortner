@@ -159,6 +159,11 @@ div#shorten-message.error
     text-align: center;
 }
 
+#urlnotfound-message p
+{
+    font-size: 18pt;
+}
+
 
 
 
