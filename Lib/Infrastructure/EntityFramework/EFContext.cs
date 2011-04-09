@@ -10,7 +10,6 @@ namespace MyPersonalShortner.Lib.Infrastructure.EntityFramework
         {
             try
             {
-                Database.CreateIfNotExists();
                 Database.SetInitializer(new MyPersonalSHortnerInitializer());
             }
             catch
