@@ -1,5 +1,5 @@
 ============== Exception ==============
-08/04/2011 19:18:53 :: Resolution of the dependency failed, type = "System.Web.Mvc.ModelMetadataProvider", name = "(none)".
+09/04/2011 03:52:23 :: Resolution of the dependency failed, type = "System.Web.Mvc.ModelMetadataProvider", name = "(none)".
 Exception occurred while: while resolving.
 Exception is: InvalidOperationException - The type ModelMetadataProvider cannot be constructed. You must configure the container to supply this value.
 -----------------------------------------------
@@ -11,7 +11,7 @@ At the time of the exception, the container was:
    at Microsoft.Practices.Unity.UnityContainerExtensions.Resolve(IUnityContainer container, Type t, ResolverOverride[] overrides)
    at MyPersonalShortner.MvcApp.IoC.UnityDependencyResolver.GetService(Type serviceType) in C:\Users\k4cid\documents\visual studio 2010\Projects\MarcioToshio\MyPersonalShortner\MvcApp\IoC\UnityDependencyResolver.cs:line 21
 ============== InnerException 1 ==============
-08/04/2011 19:18:53 :: The type ModelMetadataProvider cannot be constructed. You must configure the container to supply this value. ::    at Microsoft.Practices.ObjectBuilder2.DynamicMethodConstructorStrategy.GuardTypeIsNonPrimitive(IBuilderContext context, SelectedConstructor selectedConstructor)
+09/04/2011 03:52:23 :: The type ModelMetadataProvider cannot be constructed. You must configure the container to supply this value. ::    at Microsoft.Practices.ObjectBuilder2.DynamicMethodConstructorStrategy.GuardTypeIsNonPrimitive(IBuilderContext context, SelectedConstructor selectedConstructor)
    at Microsoft.Practices.ObjectBuilder2.DynamicMethodConstructorStrategy.PreBuildUp(IBuilderContext context)
    at Microsoft.Practices.ObjectBuilder2.StrategyChain.ExecuteBuildUp(IBuilderContext context)
    at Microsoft.Practices.ObjectBuilder2.DynamicMethodBuildPlanCreatorPolicy.CreatePlan(IBuilderContext context, NamedTypeBuildKey buildKey)

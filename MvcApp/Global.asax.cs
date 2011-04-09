@@ -26,11 +26,11 @@ namespace MyPersonalShortner.MvcApp
             routes.MapRoute("Home", "", new { controller = "Home", action = "Index" });
             routes.MapRoute("Shortner", "{hash}", new { controller = "Shortner", action = "Index", hash = UrlParameter.Optional });
 
-            //routes.MapRoute(
-            //    "Default", // Route name
-            //    "{controller}/{action}/{id}", // URL with parameters
-            //    new { controller = "Shortner", action = "Index", id = UrlParameter.Optional } // Parameter defaults
-            //);
+            routes.MapRoute(
+                "Default", // Route name
+                "{controller}/{action}/{id}", // URL with parameters
+                new { controller = "Shortner", action = "Index", id = UrlParameter.Optional } // Parameter defaults
+            );
 
         }
 
@@ -58,6 +58,7 @@ namespace MyPersonalShortner.MvcApp
             .RegisterType<IControllerActivator, CustomControllerActivator>()
             .RegisterType<IShortnerService, ShortnerService>(new HttpContextLifetimeManager<IShortnerService>())
             .RegisterType<ILongUrlRepository, LongUrlRepository>(new HttpContextLifetimeManager<ILongUrlRepository>())
+            .RegisterType<ICustomUrlRepository, CustomUrlRepository>(new HttpContextLifetimeManager<ICustomUrlRepository>())
             .RegisterType<IUrlConversion, Base10ToHash>(new HttpContextLifetimeManager<IUrlConversion>(), new InjectionConstructor(CharsForHash));
 
             return container;

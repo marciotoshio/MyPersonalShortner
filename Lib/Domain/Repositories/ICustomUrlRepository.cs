@@ -1,5 +1,4 @@
 ﻿using MyPersonalShortner.Lib.Domain.Url;
-using System.Collections.Generic;
 
 namespace MyPersonalShortner.Lib.Domain.Repositories
 {

@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Web.Mvc;
 using MyPersonalShortner.Lib.Services;
 
 namespace MyPersonalShortner.MvcApp.Controllers
@@ -13,8 +14,20 @@ namespace MyPersonalShortner.MvcApp.Controllers
 
         public ActionResult Index(string hash)
         {
-            var url = service.Expand(hash);
-            return RedirectPermanent(url);
+            try
+            {
+                var url = service.Expand(hash);
+                return RedirectPermanent(url);
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                return RedirectToAction("UrlNotFound");
+            }
+        }
+
+        public ActionResult UrlNotFound()
+        {
+            return View();
         }
     }
 }

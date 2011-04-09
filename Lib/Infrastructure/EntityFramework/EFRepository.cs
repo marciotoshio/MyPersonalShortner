@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Validation;
 using System.Linq;
@@ -34,7 +35,12 @@ namespace MyPersonalShortner.Lib.Infrastructure.EntityFramework
 
         public virtual T GetById(int id)
         {
-            return Dbset.Find(id);
+            var entity = Dbset.Find(id);
+            if(entity == null)
+            {
+                throw new ArgumentOutOfRangeException("Id", id, "Url not found.");
+            }
+            return entity;
         }
 
         public virtual IEnumerable<T> GetAll()
