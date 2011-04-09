@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System.Collections.Generic;
+using System.Data.Entity;
 using System.Data.Entity.Validation;
 using System.Linq;
 using MyPersonalShortner.Lib.CustomExceptions;
@@ -7,11 +8,11 @@ namespace MyPersonalShortner.Lib.Infrastructure.EntityFramework
 {
     public abstract class EfRepository<T> where T : class
     {
-        private readonly IDbSet<T> dbset;
+        protected readonly IDbSet<T> Dbset;
         protected EfRepository()
         {
             DatabaseFactory = new EfDatabaseFactory();
-            dbset = DataContext.Set<T>();
+            Dbset = DataContext.Set<T>();
         }
 
         private EfContext dataContext;
@@ -28,12 +29,17 @@ namespace MyPersonalShortner.Lib.Infrastructure.EntityFramework
 
         public virtual void Add(T entity)
         {
-            dbset.Add(entity);            
+            Dbset.Add(entity);            
         }
 
         public virtual T GetById(int id)
         {
-            return dbset.Find(id);
+            return Dbset.Find(id);
+        }
+
+        public virtual IEnumerable<T> GetAll()
+        {
+            return Dbset.ToList();
         }
 
         public virtual void Save()

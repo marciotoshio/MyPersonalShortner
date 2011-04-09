@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using NUnit.Framework;
 using MyPersonalShortner.MvcApp.Controllers;
 using Moq;
-using System.Web;
 using MyPersonalShortner.Lib.Services;
 
 namespace MyPersonalShortner.Tests.MvcControllers
@@ -23,7 +18,7 @@ namespace MyPersonalShortner.Tests.MvcControllers
             Assert.IsTrue(((RedirectResult)result).Permanent);
         }
 
-        private ShortnerController GetController()
+        private static ShortnerController GetController()
         {
             var mockService = new Mock<IShortnerService>();
             mockService.Setup(s => s.Expand(It.IsAny<string>())).Returns("http://github.com");

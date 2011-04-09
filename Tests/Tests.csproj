@@ -55,6 +55,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Domain\CustomUrlTest.cs" />
     <Compile Include="Domain\LongUrlTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="MvcControllers\ShortnerControllerTest.cs" />

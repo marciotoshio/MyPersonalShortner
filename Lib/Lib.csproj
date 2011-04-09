@@ -46,6 +46,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CustomExceptions\ShortnerValidationException.cs" />
+    <Compile Include="Domain\Repositories\ICustomUrlRepository.cs" />
+    <Compile Include="Domain\Url\CustomUrl.cs" />
     <Compile Include="Domain\CustomValidators\UrlAttribute.cs" />
     <Compile Include="Domain\UrlConversion\Base10ToHash.cs" />
     <Compile Include="Domain\UrlConversion\IUrlConversion.cs" />
@@ -56,6 +58,7 @@
     <Compile Include="Infrastructure\EntityFramework\EFContext.cs" />
     <Compile Include="Infrastructure\EntityFramework\EFDatabaseFactory.cs" />
     <Compile Include="Infrastructure\EntityFramework\EFRepository.cs" />
+    <Compile Include="Infrastructure\EntityFramework\Repositories\CustomUrlRepository.cs" />
     <Compile Include="Infrastructure\EntityFramework\Repositories\LongUrlRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ShortnerService.cs" />

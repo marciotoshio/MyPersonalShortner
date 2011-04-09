@@ -1,43 +1,34 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using NUnit.Framework;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
 using MyPersonalShortner.Lib.Domain.Url;
+using NUnit.Framework;
 
 namespace MyPersonalShortner.Tests.Domain
 {
     [TestFixture]
     public class LongUrlTest
     {
-        private ValidationContext validationContext;
-        private LongUrl longUrl;
+        #region Setup/Teardown
+
         [SetUp]
         public void Initialize()
         {
-            this.longUrl = new LongUrl { Id = 1, Url = "https://github.com/marciotoshio/MyPersonalShortner" };
-            this.validationContext = new ValidationContext(this.longUrl, null, null);
+            longUrl = new LongUrl {Id = 1, Url = "https://github.com/marciotoshio/MyPersonalShortner"};
+            validationContext = new ValidationContext(longUrl, null, null);
         }
 
-        [Test]
-        public void url_null_must_be_invalid()
-        {
-            this.longUrl.Url = null;
-            var validationResults = new List<ValidationResult>();
-            var result = Validator.TryValidateObject(this.longUrl, this.validationContext, validationResults, true);
-            
-            Assert.IsFalse(result);
-            Assert.AreEqual(1, validationResults.Count);
-            Assert.AreEqual("Url", validationResults[0].MemberNames.First());
-        }
+        #endregion
+
+        private ValidationContext validationContext;
+        private LongUrl longUrl;
 
         [Test]
         public void url_empty_must_be_invalid()
         {
-            this.longUrl.Url = "";
+            longUrl.Url = "";
             var validationResults = new List<ValidationResult>();
-            var result = Validator.TryValidateObject(this.longUrl, this.validationContext, validationResults, true);
+            bool result = Validator.TryValidateObject(longUrl, validationContext, validationResults, true);
 
             Assert.IsFalse(result);
             Assert.AreEqual(1, validationResults.Count);
@@ -47,51 +38,9 @@ namespace MyPersonalShortner.Tests.Domain
         [Test]
         public void url_must_be_a_url()
         {
-            this.longUrl.Url = "qwerty";
+            longUrl.Url = "qwerty";
             var validationResults = new List<ValidationResult>();
-            var result = Validator.TryValidateObject(this.longUrl, this.validationContext, validationResults, true);
-
-            Assert.IsFalse(result);
-            Assert.AreEqual(1, validationResults.Count);
-            Assert.AreEqual("Url", validationResults[0].MemberNames.First());
-        }
-
-        [Test]
-        public void url_protocol_can_be_http()
-        {
-            this.longUrl.Url = "http://test.com";
-            var validationResults = new List<ValidationResult>();
-            var result = Validator.TryValidateObject(this.longUrl, this.validationContext, validationResults, true);
-
-            Assert.IsTrue(result);
-        }
-
-        [Test]
-        public void url_protocol_can_be_https()
-        {
-            this.longUrl.Url = "https://test.com";
-            var validationResults = new List<ValidationResult>();
-            var result = Validator.TryValidateObject(this.longUrl, this.validationContext, validationResults, true);
-
-            Assert.IsTrue(result);
-        }
-
-        [Test]
-        public void url_protocol_can_be_ftp()
-        {
-            this.longUrl.Url = "ftp://test.com";
-            var validationResults = new List<ValidationResult>();
-            var result = Validator.TryValidateObject(this.longUrl, this.validationContext, validationResults, true);
-
-            Assert.IsTrue(result);
-        }
-
-        [Test]
-        public void url_protocol_cannot_be_everything_else()
-        {
-            this.longUrl.Url = "foo://test.com";
-            var validationResults = new List<ValidationResult>();
-            var result = Validator.TryValidateObject(this.longUrl, this.validationContext, validationResults, true);
+            var result = Validator.TryValidateObject(longUrl, validationContext, validationResults, true);
 
             Assert.IsFalse(result);
             Assert.AreEqual(1, validationResults.Count);
@@ -101,19 +50,73 @@ namespace MyPersonalShortner.Tests.Domain
         [Test]
         public void url_must_contains_dot_anything()
         {
-            this.longUrl.Url = "http://test";
+            longUrl.Url = "http://test";
             var validationResults1 = new List<ValidationResult>();
-            var result1 = Validator.TryValidateObject(this.longUrl, this.validationContext, validationResults1, true);
+            var result1 = Validator.TryValidateObject(longUrl, validationContext, validationResults1, true);
 
             Assert.IsFalse(result1);
             Assert.AreEqual(1, validationResults1.Count);
             Assert.AreEqual("Url", validationResults1[0].MemberNames.First());
 
-            this.longUrl.Url = "http://test.com";
+            longUrl.Url = "http://test.com";
             var validationResults2 = new List<ValidationResult>();
-            var result2 = Validator.TryValidateObject(this.longUrl, this.validationContext, validationResults2, true);
+            var result2 = Validator.TryValidateObject(longUrl, validationContext, validationResults2, true);
 
             Assert.IsTrue(result2);
+        }
+
+        [Test]
+        public void url_null_must_be_invalid()
+        {
+            longUrl.Url = null;
+            var validationResults = new List<ValidationResult>();
+            var result = Validator.TryValidateObject(longUrl, validationContext, validationResults, true);
+
+            Assert.IsFalse(result);
+            Assert.AreEqual(1, validationResults.Count);
+            Assert.AreEqual("Url", validationResults[0].MemberNames.First());
+        }
+
+        [Test]
+        public void url_protocol_can_be_ftp()
+        {
+            longUrl.Url = "ftp://test.com";
+            var validationResults = new List<ValidationResult>();
+            var result = Validator.TryValidateObject(longUrl, validationContext, validationResults, true);
+
+            Assert.IsTrue(result);
+        }
+
+        [Test]
+        public void url_protocol_can_be_http()
+        {
+            longUrl.Url = "http://test.com";
+            var validationResults = new List<ValidationResult>();
+            var result = Validator.TryValidateObject(longUrl, validationContext, validationResults, true);
+
+            Assert.IsTrue(result);
+        }
+
+        [Test]
+        public void url_protocol_can_be_https()
+        {
+            longUrl.Url = "https://test.com";
+            var validationResults = new List<ValidationResult>();
+            var result = Validator.TryValidateObject(longUrl, validationContext, validationResults, true);
+
+            Assert.IsTrue(result);
+        }
+
+        [Test]
+        public void url_protocol_cannot_be_everything_else()
+        {
+            longUrl.Url = "foo://test.com";
+            var validationResults = new List<ValidationResult>();
+            var result = Validator.TryValidateObject(longUrl, validationContext, validationResults, true);
+
+            Assert.IsFalse(result);
+            Assert.AreEqual(1, validationResults.Count);
+            Assert.AreEqual("Url", validationResults[0].MemberNames.First());
         }
     }
 }
