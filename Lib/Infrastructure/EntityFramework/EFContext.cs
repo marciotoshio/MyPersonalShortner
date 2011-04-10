@@ -27,6 +27,7 @@ namespace MyPersonalShortner.Lib.Infrastructure.EntityFramework
                 context.CustomUrls.Add(new CustomUrl { Url = "https://twitter.com/marciotoshio", CustomPart = "twitter" });
                 context.CustomUrls.Add(new CustomUrl { Url = "http://www.facebook.com/marciotoshio", CustomPart = "facebook" });
                 context.CustomUrls.Add(new CustomUrl { Url = "http://picasaweb.google.com/marciotoshioide", CustomPart = "picasa" });
+                context.CustomUrls.Add(new CustomUrl { Url = "http://www.linkedin.com/in/marciotoshio", CustomPart = "linkedin" });
             
                 context.SaveChanges();
                 base.Seed(context);
