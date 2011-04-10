@@ -3,6 +3,8 @@ using System.Web.Mvc;
 using MyPersonalShortner.Lib.Services;
 using MyPersonalShortner.MvcApp.Areas.Api.DTO;
 using MyPersonalShortner.Lib.CustomExceptions;
+using System.Web;
+using MyPersonalShortner.MvcApp.Helpers;
 
 namespace MyPersonalShortner.MvcApp.Areas.Api.Controllers
 {
@@ -16,46 +18,51 @@ namespace MyPersonalShortner.MvcApp.Areas.Api.Controllers
 
         public JsonResult Index()
         {
-            return Json(new { Welcome = "Welcome API v0.1!!!" }, JsonRequestBehavior.AllowGet);
+            AppHelper.EnableCors(System.Web.HttpContext.Current);
+            return Json(new { Welcome = "Welcome, My Personal Shorner API v0.1!!!" }, "application/json");
         }
 
         [HttpPost]
         public JsonResult Shorten()
         {
+            ApiResult result;
             try
             {
                 var url = Request["url"];
                 var hash = service.Shorten(url.Trim());
-                var result = new ApiShortenResult
+                result = new ApiShortenResult
                 {
                     Success = true,
                     Message = "success",
                     Hash = hash,
                     LongUrl = url
                 };
-                return Json(result, JsonRequestBehavior.AllowGet);
             }
             catch (ShortnerValidationException ex)
             {
-                var validationResult = new ApiErrorResult { 
+                result = new ApiErrorResult { 
                     Success = false,
                     Errors = ex.Errors,
                     Message = ex.Message
                 };
-                Response.StatusCode = 500;
-                Response.TrySkipIisCustomErrors = true;
-                return Json(validationResult);
+                ResponseError();
             }
             catch (Exception ex)
             {
-                var exResult = new ApiResult {
+                result = new ApiResult {
                     Success = false,
                     Message = ex.Message
                 };
-                Response.StatusCode = 500;
-                Response.TrySkipIisCustomErrors = true;
-                return Json(exResult);
+                ResponseError();
             }
+            AppHelper.EnableCors(System.Web.HttpContext.Current);
+            return Json(result, "application/json");
+        }
+
+        private void ResponseError()
+        {
+            Response.StatusCode = 500;
+            Response.TrySkipIisCustomErrors = true;
         }
     }
 }
