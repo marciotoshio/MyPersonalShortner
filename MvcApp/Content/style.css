@@ -74,7 +74,6 @@ h1, h2, h3, h4, h5, h6 { font-weight: bold; }
 a, a:active, a:visited { color: #607890; }
 a:hover { color: #036; }
 
-
 /**
  * Primary styles
  *
@@ -125,7 +124,7 @@ footer
     padding: 5px
 }
 
-div#shorten-url
+#shorten-url
 {
     margin: 30px;
     text-align: center;
@@ -133,7 +132,7 @@ div#shorten-url
     color: #afa;
 }
 
-div#shorten-message
+#shorten-message
 {
     border-width: 1px;
     border-style: solid;
@@ -142,13 +141,13 @@ div#shorten-message
     margin: 10px 200px;    
 }
 
-div#shorten-message ul
+#shorten-message ul
 {
     list-style: none;
     margin: 10px 0;    
 }
 
-div#shorten-message.error
+#shorten-message.error
 {
     border-color: #f00;
     background-color: #faa;
@@ -165,15 +164,6 @@ div#shorten-message.error
 }
 
 
-
-
-
-
-
-
-
-
-
 .ir { display: block; text-indent: -999em; overflow: hidden; background-repeat: no-repeat; text-align: left; direction: ltr; }
 .hidden { display: none; visibility: hidden; }
 .visuallyhidden { border: 0; clip: rect(0 0 0 0); height: 1px; margin: -1px; overflow: hidden; padding: 0; position: absolute; width: 1px; }
@@ -183,7 +173,6 @@ div#shorten-message.error
 .clearfix:before, .clearfix:after { content: "\0020"; display: block; height: 0; overflow: hidden; }
 .clearfix:after { clear: both; }
 .clearfix { zoom: 1; }
-
 
 @media all and (orientation:portrait) {
 
@@ -213,4 +202,3 @@ div#shorten-message.error
   p, h2, h3 { orphans: 3; widows: 3; }
   h2, h3{ page-break-after: avoid; }
 }
-
