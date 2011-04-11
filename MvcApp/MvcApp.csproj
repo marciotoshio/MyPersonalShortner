@@ -137,7 +137,6 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Content\themes\base\" />
     <Folder Include="log\" />
   </ItemGroup>
   <ItemGroup>
