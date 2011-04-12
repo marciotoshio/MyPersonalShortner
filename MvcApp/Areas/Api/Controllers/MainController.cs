@@ -12,13 +12,13 @@ namespace MyPersonalShortner.MvcApp.Areas.Api.Controllers
         private readonly IShortnerService service;
         public MainController(IShortnerService service)
         {
+            AppHelper.EnableCors(System.Web.HttpContext.Current);
             this.service = service;
         }
 
         public JsonResult Index()
         {
-            AppHelper.EnableCors(System.Web.HttpContext.Current);
-            return Json(new { Welcome = "Welcome, My Personal Shorner API v0.1!!!" }, "application/json");
+            return Json(new { Welcome = "Welcome, My Personal Shorner API v0.1!!!" }, "application/json", JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]
@@ -54,8 +54,7 @@ namespace MyPersonalShortner.MvcApp.Areas.Api.Controllers
                 };
                 ResponseError();
             }
-            AppHelper.EnableCors(System.Web.HttpContext.Current);
-            return Json(result, "application/json");
+            return Json(result, "application/json", JsonRequestBehavior.AllowGet);
         }
 
         private void ResponseError()
