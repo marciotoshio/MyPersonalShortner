@@ -46,7 +46,7 @@ namespace MyPersonalShortner.Lib.Infrastructure.EntityFramework
 
         public T Get(Func<T, bool> where)
         {
-            return dbset.Where(where).FirstOrDefault<T>();
+            return dbset.Where(where).FirstOrDefault();
         }
 
         public virtual IEnumerable<T> GetAll()

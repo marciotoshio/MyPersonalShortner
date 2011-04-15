@@ -97,6 +97,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Areas\Api\ApiAreaRegistration.cs" />
+    <Compile Include="Areas\Api\Controllers\ShareController.cs" />
     <Compile Include="Areas\Api\Controllers\MainController.cs" />
     <Compile Include="Areas\Api\DTO\ApiDataResult.cs" />
     <Compile Include="Areas\Api\DTO\ApiResult.cs" />

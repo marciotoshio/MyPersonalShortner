@@ -24,34 +24,40 @@ namespace MyPersonalShortner.MvcApp.Areas.Api.Controllers
         [HttpPost]
         public JsonResult Shorten()
         {
+            return ShortenUrl(Request["url"]);
+        }
+
+        private JsonResult ShortenUrl(string url)
+        {
             ApiResult result;
             try
             {
-                var url = Request["url"];
                 var hash = service.Shorten(url.Trim());
                 result = new ApiShortenResult
-                {
-                    Success = true,
-                    Message = "success",
-                    Hash = hash,
-                    LongUrl = url
-                };
+                             {
+                                 Success = true,
+                                 Message = "success",
+                                 Hash = hash,
+                                 LongUrl = url
+                             };
             }
             catch (ShortnerValidationException ex)
             {
-                result = new ApiErrorResult { 
-                    Success = false,
-                    Errors = ex.Errors,
-                    Message = ex.Message
-                };
+                result = new ApiErrorResult 
+                            { 
+                                Success = false,
+                                Errors = ex.Errors,
+                                Message = ex.Message
+                            };
                 ResponseError();
             }
             catch (Exception ex)
             {
-                result = new ApiResult {
-                    Success = false,
-                    Message = ex.Message
-                };
+                result = new ApiResult 
+                            {
+                                Success = false,
+                                Message = ex.Message
+                            };
                 ResponseError();
             }
             return Json(result, "application/json", JsonRequestBehavior.AllowGet);
