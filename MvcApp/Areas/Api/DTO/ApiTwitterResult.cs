@@ -8,5 +8,8 @@ namespace MyPersonalShortner.MvcApp.Areas.Api.DTO
     {
         [DataMember(Name = "access_token")]
         public AccessToken AccessToken { get; set; }
+
+        [DataMember(Name = "screen_name")]
+        public string ScreenName { get; set; }
     }
 }

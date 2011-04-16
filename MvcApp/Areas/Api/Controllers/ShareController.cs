@@ -25,8 +25,9 @@ namespace MyPersonalShortner.MvcApp.Areas.Api.Controllers
 
         public JsonResult Authenticate(string oauth_token, string oauth_verifier)
         {
-            var result = twitterService.Authenticate(oauth_token, oauth_verifier);
-            return Json(new ApiTwitterResult { AccessToken = result, Message = "ok", Success = true}, 
+            var accessToken = twitterService.Authenticate(oauth_token, oauth_verifier);
+            var screenName = twitterService.GetScreenName(accessToken);
+            return Json(new ApiTwitterResult { AccessToken = accessToken, ScreenName = screenName, Message = "ok", Success = true }, 
                 "application/json", JsonRequestBehavior.AllowGet);
         }
     }

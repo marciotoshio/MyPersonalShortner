@@ -38,6 +38,12 @@ namespace MyPersonalShortner.Lib.Infrastructure.TweetSharp
             return new AccessToken {Token = accessToken.Token, TokenSecret = accessToken.TokenSecret};
         }
 
+        public string GetScreenName(AccessToken accessToken)
+        {
+            var service = new TwitterService(consumerKey, consumerSecret, accessToken.Token, accessToken.TokenSecret);
+            return service.VerifyCredentials().ScreenName;
+        }
+
         public void UpdateStatus(AccessToken accessToken, string status)
         {
             var service = new TwitterService();

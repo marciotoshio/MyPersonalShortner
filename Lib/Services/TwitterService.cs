@@ -6,6 +6,7 @@ namespace MyPersonalShortner.Lib.Services
     {
         string Authorize(string callbackUrl);
         AccessToken Authenticate(string oauthToken, string oauthVerifier);
+        string GetScreenName(AccessToken accessToken);
         void UpdateStatus(AccessToken accessToken, string status);
     }
 
@@ -25,6 +26,11 @@ namespace MyPersonalShortner.Lib.Services
         public AccessToken Authenticate(string oauthToken, string oauthVerifier)
         {
             return twitter.Authenticate(oauthToken, oauthVerifier);
+        }
+
+        public  string GetScreenName(AccessToken accessToken)
+        {
+            return twitter.GetScreenName(accessToken);
         }
 
         public void UpdateStatus(AccessToken accessToken, string status)
