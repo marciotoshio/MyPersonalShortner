@@ -99,9 +99,10 @@
     <Compile Include="Areas\Api\ApiAreaRegistration.cs" />
     <Compile Include="Areas\Api\Controllers\ShareController.cs" />
     <Compile Include="Areas\Api\Controllers\MainController.cs" />
-    <Compile Include="Areas\Api\DTO\ApiDataResult.cs" />
+    <Compile Include="Areas\Api\DTO\ApiShortenResult.cs" />
     <Compile Include="Areas\Api\DTO\ApiResult.cs" />
     <Compile Include="Areas\Api\DTO\ApiErrorResult.cs" />
+    <Compile Include="Areas\Api\DTO\ApiTwitterResult.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ShortnerController.cs" />
     <Compile Include="Global.asax.cs">

@@ -3,7 +3,7 @@ using MyPersonalShortner.MvcApp.Helpers;
 
 namespace MyPersonalShortner.MvcApp.Areas.Api.DTO
 {
-    [DataContract(Name = "data")]
+    [DataContract(Name = "shorten")]
     public class ApiShortenResult : ApiResult
     {
         [DataMember(Name = "url")]
