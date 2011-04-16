@@ -118,5 +118,15 @@ namespace MyPersonalShortner.Tests.Domain
             Assert.AreEqual(1, validationResults.Count);
             Assert.AreEqual("Url", validationResults[0].MemberNames.First());
         }
+
+        [Test]
+        public void Accept_url_with_hashbang()
+        {
+            longUrl.Url = "https://test.com/#!/test";
+            var validationResults = new List<ValidationResult>();
+            var result = Validator.TryValidateObject(longUrl, validationContext, validationResults, true);
+
+            Assert.IsTrue(result);
+        }
     }
 }
