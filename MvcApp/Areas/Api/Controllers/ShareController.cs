@@ -18,8 +18,7 @@ namespace MyPersonalShortner.MvcApp.Areas.Api.Controllers
 
         public ActionResult Authorize(string callbackUrl)
         {
-            // TODO: remove hardcoded url
-            callbackUrl = "http://localhost:7981/Api/Share/Authenticate";
+            callbackUrl = AppHelper.GetFullHostAddress() + callbackUrl;
             var uri = twitterService.Authorize(callbackUrl);
             return new RedirectResult(uri, false /*permanent*/);
         }
@@ -29,12 +28,6 @@ namespace MyPersonalShortner.MvcApp.Areas.Api.Controllers
             var result = twitterService.Authenticate(oauth_token, oauth_verifier);
             return Json(new ApiTwitterResult { AccessToken = result, Message = "ok", Success = true}, 
                 "application/json", JsonRequestBehavior.AllowGet);
-        }
-
-        private void ResponseError()
-        {
-            Response.StatusCode = 500;
-            Response.TrySkipIisCustomErrors = true;
         }
     }
 }
