@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Web.Mvc;
+using MyPersonalShortner.Lib.Domain.Twitter;
 using MyPersonalShortner.Lib.Services;
 using MyPersonalShortner.MvcApp.Areas.Api.DTO;
-using MyPersonalShortner.Lib.CustomExceptions;
 using MyPersonalShortner.MvcApp.Helpers;
 
 namespace MyPersonalShortner.MvcApp.Areas.Api.Controllers
@@ -18,17 +18,74 @@ namespace MyPersonalShortner.MvcApp.Areas.Api.Controllers
 
         public ActionResult Authorize(string callbackUrl)
         {
-            callbackUrl = AppHelper.GetFullHostAddress() + callbackUrl;
-            var uri = twitterService.Authorize(callbackUrl);
-            return new RedirectResult(uri, false /*permanent*/);
+            try
+            {
+                callbackUrl = AppHelper.GetFullHostAddress() + callbackUrl;
+                var uri = twitterService.Authorize(callbackUrl);
+                return new RedirectResult(uri, false /*permanent*/);
+            }
+            catch (Exception ex)
+            {
+                return Content("Error on authenticate: " + ex.Message);
+            }
+            
         }
 
-        public JsonResult Authenticate(string oauth_token, string oauth_verifier)
+        public JsonResult Authenticate()
         {
-            var accessToken = twitterService.Authenticate(oauth_token, oauth_verifier);
-            var screenName = twitterService.GetScreenName(accessToken);
-            return Json(new ApiTwitterResult { AccessToken = accessToken, ScreenName = screenName, Message = "ok", Success = true }, 
-                "application/json", JsonRequestBehavior.AllowGet);
+            ApiResult result;
+            try
+            {
+                var oauthToken = Request["oauth_token"];
+                var oauthVerifier = Request["oauth_verifier"];
+                var accessToken = twitterService.Authenticate(oauthToken, oauthVerifier);
+                var screenName = twitterService.GetScreenName(accessToken);
+                result = new ApiTwitterResult {
+                                AccessToken = accessToken, 
+                                ScreenName = screenName, 
+                                Message = "ok", 
+                                Success = true
+                };
+                return Json(result, "application/json", JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                result = new ApiResult
+                {
+                    Success = false,
+                    Message = ex.Message
+                };
+                ResponseError();
+            }
+            return Json(result, "application/json", JsonRequestBehavior.AllowGet);            
+        }
+
+        [HttpPost]
+        public JsonResult UpdateStatus(string token, string tokenSecret, string status)
+        {
+            ApiResult result;
+            try
+            {
+                var accessToken = new AccessToken {Token = token, TokenSecret = tokenSecret};
+                twitterService.UpdateStatus(accessToken, status);
+                result = new ApiResult {Message = "ok", Success = true};
+            }
+            catch (Exception ex)
+            {
+                result = new ApiResult
+                {
+                    Success = false,
+                    Message = ex.Message
+                };
+                ResponseError();
+            }
+            return Json(result, "application/json", JsonRequestBehavior.AllowGet); 
+        }
+
+        private void ResponseError()
+        {
+            Response.StatusCode = 500;
+            Response.TrySkipIisCustomErrors = true;
         }
     }
 }

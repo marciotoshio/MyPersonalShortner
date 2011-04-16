@@ -5,50 +5,37 @@ namespace MyPersonalShortner.Lib.Infrastructure.TweetSharp
 {
     public class TweetSharpImpl : ITwitter
     {
-        private readonly string consumerKey;
-        private readonly string consumerSecret;
+        private readonly TwitterService twitterService;
 
         public TweetSharpImpl(string consumerKey, string consumerSecret)
         {
-            this.consumerKey = consumerKey;
-            this.consumerSecret = consumerSecret;
+            twitterService = new TwitterService(consumerKey, consumerSecret);
         }
 
         public string Authorize(string callbackUrl)
         {
-            // Step 1 - Retrieve an OAuth Request Token
-            var service = new TwitterService(consumerKey, consumerSecret);
-            var requestToken = service.GetRequestToken(callbackUrl); // <-- The registered callback URL
-
-            // Step 2 - Redirect to the OAuth Authorization URL
-            var uri = service.GetAuthorizationUri(requestToken);
+            var requestToken = twitterService.GetRequestToken(callbackUrl); // <-- The registered callback URL
+            var uri = twitterService.GetAuthorizationUri(requestToken);
             return uri.ToString();
         }
 
         public AccessToken Authenticate(string oauthToken, string oauthVerifier)
         {
             var requestToken = new OAuthRequestToken { Token = oauthToken };
-
-            // Step 3 - Exchange the Request Token for an Access Token
-            var service = new TwitterService(consumerKey, consumerSecret);
-            var accessToken = service.GetAccessToken(requestToken, oauthVerifier);
-
-            // Step 4 - User authenticates using the Access Token
-            service.AuthenticateWith(accessToken.Token, accessToken.TokenSecret);
+            var accessToken = twitterService.GetAccessToken(requestToken, oauthVerifier);
             return new AccessToken {Token = accessToken.Token, TokenSecret = accessToken.TokenSecret};
         }
 
         public string GetScreenName(AccessToken accessToken)
         {
-            var service = new TwitterService(consumerKey, consumerSecret, accessToken.Token, accessToken.TokenSecret);
-            return service.VerifyCredentials().ScreenName;
+            twitterService.AuthenticateWith(accessToken.Token, accessToken.TokenSecret);
+            return twitterService.VerifyCredentials().ScreenName;
         }
 
         public void UpdateStatus(AccessToken accessToken, string status)
         {
-            var service = new TwitterService();
-            service.AuthenticateWith(consumerKey, consumerSecret, accessToken.Token, accessToken.TokenSecret);
-            service.SendTweet(status);
+            twitterService.AuthenticateWith(accessToken.Token, accessToken.TokenSecret);
+            twitterService.SendTweet(status);
         }
     }
 }
