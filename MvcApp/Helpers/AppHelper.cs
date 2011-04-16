@@ -7,7 +7,7 @@ namespace MyPersonalShortner.MvcApp.Helpers
     {
         public static string GetFullHostAddress()
         {
-            return HttpContext.Current.Request.Url.Scheme + "://" + HttpContext.Current.Request.Url.Authority + "/";
+            return HttpContext.Current.Request.Url.Scheme + "://" + HttpContext.Current.Request.Url.Authority;
         }
 
         public static void EnableCors(HttpContext context)

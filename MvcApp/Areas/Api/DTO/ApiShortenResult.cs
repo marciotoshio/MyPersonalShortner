@@ -7,7 +7,7 @@ namespace MyPersonalShortner.MvcApp.Areas.Api.DTO
     public class ApiShortenResult : ApiResult
     {
         [DataMember(Name = "url")]
-        public string Url { get { return AppHelper.GetFullHostAddress() + Hash; } }
+        public string Url { get { return string.Format("{0}/{1}", AppHelper.GetFullHostAddress(), Hash); } }
 
         [DataMember(Name = "hash")]
         public string Hash { get; set; }
