@@ -1,8 +1,8 @@
 My Personal Shortner
-====================
+================
 
 Dependencies
-------------
+-------------------
 * .NET Framework 4.0
 * ASP.NET MVC 3
 * SQL Server Compact 4.0 (for test with embedded database)
@@ -11,8 +11,22 @@ Dependencies
 * NUnit 2.5.9.10348
 * Moq 4.0.10827
 
+How it works
+-----------------
+Just call the Shorten action on MainController in the API area posting a "url" if success the response willl be a json in the format:
+
+	{
+		"Url":"http://yourdoma.in/f", // the shrtned url
+		"Hash":"f", // created hash
+		"LongUrl":"http://www.google.com.br/", // original url
+		"Success":true, // everything is ok
+		"Message":"success" // a message
+	}
+
 Troubleshooting
-------------
+---------------------
 The ASP.Net MVC 3 project is using IIS Express as develop web server, if you have trouble with the project loading edit the csproj find any reference to UseIISExpress and set it to false.
 
-The project uses SQL Server Compact 4.0 for tests if you want to use the normal Sql Server change the connection string to match your db and run SQlStart.sql
+The project uses SQL Server Compact 4.0 for tests if you want to use the normal Sql Server change the connection string to match your db.
+
+If your host doesn't allow you to create tables through your application you can use the SQlStart.sql, remember to disable database initializer in web.config 
