@@ -7,10 +7,10 @@ using MyPersonalShortner.Lib.CustomExceptions;
 
 namespace MyPersonalShortner.Lib.Infrastructure.EntityFramework
 {
-    public abstract class EfRepository<T> where T : class
+    public abstract class EfDataAccess<T> where T : class
     {
         private readonly IDbSet<T> dbset;
-        protected EfRepository()
+        protected EfDataAccess()
         {
             DatabaseFactory = new EfDatabaseFactory();
             dbset = DataContext.Set<T>();

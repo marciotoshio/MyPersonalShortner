@@ -5,7 +5,7 @@ using Microsoft.Practices.Unity;
 using MyPersonalShortner.Lib.Services;
 using MyPersonalShortner.MvcApp.IoC;
 using MyPersonalShortner.Lib.Domain.Repositories;
-using MyPersonalShortner.Lib.Infrastructure.EntityFramework.Repositories;
+using MyPersonalShortner.Lib.Infrastructure.EntityFramework.DataAccess;
 using MyPersonalShortner.Lib.Domain.UrlConversion;
 using MyPersonalShortner.Lib.Domain.Twitter;
 using MyPersonalShortner.Lib.Infrastructure.TweetSharp;
@@ -59,8 +59,8 @@ namespace MyPersonalShortner.MvcApp
             var container = new UnityContainer()
             .RegisterType<IControllerActivator, CustomControllerActivator>()
             .RegisterType<IShortnerService, ShortnerService>(new HttpContextLifetimeManager<IShortnerService>())
-            .RegisterType<ILongUrlRepository, LongUrlRepository>(new HttpContextLifetimeManager<ILongUrlRepository>())
-            .RegisterType<ICustomUrlRepository, CustomUrlRepository>(new HttpContextLifetimeManager<ICustomUrlRepository>())
+            .RegisterType<ILongUrlRepository, LongUrlDataAccess>(new HttpContextLifetimeManager<ILongUrlRepository>())
+            .RegisterType<ICustomUrlRepository, CustomUrlDataAccess>(new HttpContextLifetimeManager<ICustomUrlRepository>())
             .RegisterType<IUrlConversion, Base10ToHash>(new HttpContextLifetimeManager<IUrlConversion>(), new InjectionConstructor(CharsForHash))
             .RegisterType<ITwitterService, TwitterService>(new HttpContextLifetimeManager<ITwitterService>())
             .RegisterType<ITwitter, TweetSharpImpl>(new InjectionConstructor("5CodmDJ548luW9gkrH0sg", "bnNNQ17QBLMcQ9g5Tosbbr3ps2BHtTE8AvtKZgTmdCM"));

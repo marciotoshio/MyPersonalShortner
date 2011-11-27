@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using MyPersonalShortner.Lib.Domain.Account;
+﻿using MyPersonalShortner.Lib.Domain.Account;
+using MyPersonalShortner.Lib.Domain.Repositories;
 
 namespace MyPersonalShortner.Lib.Services
 {
@@ -13,7 +10,12 @@ namespace MyPersonalShortner.Lib.Services
 
     public class FacebookUserService : IFacebookUserService
     {
-
+        private IFacebookUserRepository repository;
+        public FacebookUserService(IFacebookUserRepository repository)
+        {
+            this.repository = repository;
+        }
+        
         public void VerifyIfIsNewUser(FacebookUser fbUser)
         {
         }

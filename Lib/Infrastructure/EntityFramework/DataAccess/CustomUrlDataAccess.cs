@@ -1,9 +1,9 @@
 ﻿using MyPersonalShortner.Lib.Domain.Url;
 using MyPersonalShortner.Lib.Domain.Repositories;
 
-namespace MyPersonalShortner.Lib.Infrastructure.EntityFramework.Repositories
+namespace MyPersonalShortner.Lib.Infrastructure.EntityFramework.DataAccess
 {
-    public class CustomUrlRepository : EfRepository<CustomUrl>, ICustomUrlRepository
+    public class CustomUrlDataAccess : EfDataAccess<CustomUrl>, ICustomUrlRepository
     {
         public override CustomUrl Add(CustomUrl entity)
         {

@@ -1,9 +1,9 @@
 ﻿using MyPersonalShortner.Lib.Domain.Url;
 using MyPersonalShortner.Lib.Domain.Repositories;
 
-namespace MyPersonalShortner.Lib.Infrastructure.EntityFramework.Repositories
+namespace MyPersonalShortner.Lib.Infrastructure.EntityFramework.DataAccess
 {
-    public class LongUrlRepository : EfRepository<LongUrl>, ILongUrlRepository
+    public class LongUrlDataAccess : EfDataAccess<LongUrl>, ILongUrlRepository
     {
         public override LongUrl Add(LongUrl entity)
         {
