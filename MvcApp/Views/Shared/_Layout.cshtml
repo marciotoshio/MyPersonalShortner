@@ -20,6 +20,7 @@
 <body>
     <div id="container">
         <header>
+            <div id="login">@{Html.RenderAction("Login", "Account");}</div>
             @RenderSection("Header")
         </header>
         <section id="main" role="main">

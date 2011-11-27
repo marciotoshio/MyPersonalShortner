@@ -5,7 +5,8 @@ namespace MyPersonalShortner.Lib.Services
 {
     public interface IFacebookUserService
     {
-        void VerifyIfIsNewUser(FacebookUser fbUser);
+        FacebookUser GetByFacebookId(long fbId);
+        void Create(FacebookUser facebookUser);
     }
 
     public class FacebookUserService : IFacebookUserService
@@ -15,9 +16,16 @@ namespace MyPersonalShortner.Lib.Services
         {
             this.repository = repository;
         }
-        
-        public void VerifyIfIsNewUser(FacebookUser fbUser)
+
+        public FacebookUser GetByFacebookId(long fbId)
         {
+            return repository.GetByFacebookId(fbId);
+        }
+
+        public void Create(FacebookUser facebookUser)
+        {
+            repository.Add(facebookUser);
+            repository.Save();
         }
     }
 }

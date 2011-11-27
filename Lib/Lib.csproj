@@ -70,6 +70,7 @@
     <Compile Include="Domain\Repositories\ILongUrlRepository.cs" />
     <Compile Include="Domain\Repositories\IRepository.cs" />
     <Compile Include="Domain\Url\LongUrl.cs" />
+    <Compile Include="Infrastructure\EntityFramework\DataAccess\FacebookUserDataAccess.cs" />
     <Compile Include="Infrastructure\EntityFramework\Disposable.cs" />
     <Compile Include="Infrastructure\EntityFramework\EFContext.cs" />
     <Compile Include="Infrastructure\EntityFramework\EFDatabaseFactory.cs" />

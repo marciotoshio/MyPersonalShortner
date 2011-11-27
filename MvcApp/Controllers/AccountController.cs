@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using MyPersonalShortner.Lib.Services;
+﻿using System.Web.Mvc;
 using Facebook.Web;
+using MyPersonalShortner.Lib.Services;
 using MyPersonalShortner.MvcApp.Helpers;
 
 namespace MyPersonalShortner.MvcApp.Controllers
@@ -19,14 +15,8 @@ namespace MyPersonalShortner.MvcApp.Controllers
 
         public ActionResult Login()
         {
-            if (FacebookWebContext.Current.IsAuthenticated())
-            {
-                var currentUser = FacebookHelper.CurrentUser;
-                service.VerifyIfIsNewUser(currentUser);
-                return RedirectToAction("Index", "Home");
-            }
-            return View();
+            var currentUser = FacebookHelper.CurrentUser(service);
+            return PartialView(currentUser);
         }
-
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System.Data.Entity;
 using MyPersonalShortner.Lib.Domain.Url;
+using MyPersonalShortner.Lib.Domain.Account;
 
 namespace MyPersonalShortner.Lib.Infrastructure.EntityFramework
 {
@@ -13,6 +14,7 @@ namespace MyPersonalShortner.Lib.Infrastructure.EntityFramework
 
         public DbSet<LongUrl> Urls { get; set; }
         public DbSet<CustomUrl> CustomUrls { get; set; }
+        public DbSet<FacebookUser> FacebookUsers { get; set; }
 
         private class MyPersonalSHortnerInitializer : DropCreateDatabaseIfModelChanges<EfContext>
         {

@@ -11,7 +11,7 @@ namespace MyPersonalShortner.Lib.Domain.Account
         public string Name { get; set; }
         public string ProfilePicture
         {
-            get { return string.Format("https://graph.facebook.com/{0}/picture", Id); }
+            get { return string.Format("https://graph.facebook.com/{0}/picture", FacebookId); }
         }
     }
 }

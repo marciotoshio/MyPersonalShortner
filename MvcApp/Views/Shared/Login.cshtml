@@ -1,0 +1,10 @@
+﻿@model MyPersonalShortner.Lib.Domain.Account.FacebookUser
+
+@if (@Model == null)
+{
+    <fb:login-button></fb:login-button>
+}
+else
+{ 
+    <img src="@Model.ProfilePicture" alt="@Model.Name" /> <span>@Model.Name</span>
+}
