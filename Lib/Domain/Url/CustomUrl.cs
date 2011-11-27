@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using MyPersonalShortner.Lib.Domain.CustomValidators;
+using MyPersonalShortner.Lib.Domain.Account;
 
 namespace MyPersonalShortner.Lib.Domain.Url
 {
@@ -12,5 +13,7 @@ namespace MyPersonalShortner.Lib.Domain.Url
         [Required]
         [MaxLength(10)]
         public string CustomPart { get; set; }
+
+        public FacebookUser FacebookUser { get; set; }
     }
 }
