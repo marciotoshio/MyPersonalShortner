@@ -21,7 +21,14 @@
     <div id="container">
         <header>
             <div id="login">@{Html.RenderAction("Login", "Account");}</div>
-            @RenderSection("Header")
+            @if (IsSectionDefined("Header"))
+            { 
+                @RenderSection("Header")
+            }
+            else
+            { 
+                <h1 class="title">My Personal Shortner</h1>
+            }
         </header>
         <section id="main" role="main">
             @RenderBody()
