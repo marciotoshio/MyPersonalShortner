@@ -10,22 +10,11 @@ namespace MyPersonalShortner.Lib.Infrastructure.EntityFramework
     public abstract class EfDataAccess<T> where T : class
     {
         private readonly IDbSet<T> dbset;
+        private readonly EfContext context;
         protected EfDataAccess()
         {
-            DatabaseFactory = new EfDatabaseFactory();
-            dbset = DataContext.Set<T>();
-        }
-
-        private EfContext dataContext;
-        protected EfContext DataContext
-        {
-            get { return dataContext ?? (dataContext = DatabaseFactory.Get()); }
-        }
-
-        protected EfDatabaseFactory DatabaseFactory
-        {
-            get;
-            private set;
+            context = new EfDatabaseFactory().Get();
+            dbset = context.Set<T>();
         }
 
         public virtual T Add(T entity)
@@ -49,6 +38,11 @@ namespace MyPersonalShortner.Lib.Infrastructure.EntityFramework
             return dbset.Where(where).FirstOrDefault();
         }
 
+        public IList<T> List(Func<T, bool> where)
+        {
+            return dbset.Where(where).ToList();
+        }
+
         public virtual IEnumerable<T> GetAll()
         {
             return dbset.ToList();
@@ -58,7 +52,7 @@ namespace MyPersonalShortner.Lib.Infrastructure.EntityFramework
         {
             try
             {
-                DataContext.SaveChanges();
+                context.SaveChanges();
             }
             catch (DbEntityValidationException dbEx)
             {

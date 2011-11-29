@@ -1,5 +1,6 @@
 ﻿using MyPersonalShortner.Lib.Domain.Url;
 using MyPersonalShortner.Lib.Domain.Repositories;
+using System.Collections.Generic;
 
 namespace MyPersonalShortner.Lib.Infrastructure.EntityFramework.DataAccess
 {
@@ -18,6 +19,11 @@ namespace MyPersonalShortner.Lib.Infrastructure.EntityFramework.DataAccess
         public CustomUrl GetByUrl(string url)
         {
             return Get(customUrl => customUrl.Url == url);
+        }
+
+        public IList<CustomUrl> ListByFacebookId(long fbId)
+        {
+            return List(customUrl => customUrl.FacebookUserId == fbId);
         }
     }
 }

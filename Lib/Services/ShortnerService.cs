@@ -2,19 +2,23 @@
 using MyPersonalShortner.Lib.Domain.Url;
 using MyPersonalShortner.Lib.Domain.UrlConversion;
 using System.Collections;
+using System.Collections.Concurrent;
+using MyPersonalShortner.Lib.Infrastructure;
+using System.Collections.Generic;
 
 namespace MyPersonalShortner.Lib.Services
 {
     public interface IShortnerService
     {
-        void AddCustomUrl(string url, string customPart);
+        void AddCustomUrl(CustomUrl customUrl);
         string Shorten(string url);
         string Expand(string hash);
+        IList<CustomUrl> CustomUrlsByFacebookId(long fbId);
     }
 
     public class ShortnerService : IShortnerService
     {
-        private static Hashtable customUrlsCache;
+        private static ConcurrentDictionary<string, string> customUrlsCache;
 
         private readonly ILongUrlRepository longUrlRepository;
         private readonly ICustomUrlRepository customUrlRepository;
@@ -24,15 +28,15 @@ namespace MyPersonalShortner.Lib.Services
             this.longUrlRepository = longUrlRepository;
             this.customUrlRepository = customUrlRepository;
             this.urlConversion = urlConversion;
+
             StartCustomUrlCache();
         }
 
-        public void AddCustomUrl(string url, string customPart)
+        public void AddCustomUrl(CustomUrl customUrl)
         {
-            var customUrl = new CustomUrl { Url = url, CustomPart = customPart};
             customUrlRepository.Add(customUrl);
             customUrlRepository.Save();
-            customUrlsCache.Add(customPart, url);
+            customUrlsCache.TryAdd(customUrl.CustomPart, customUrl.Url);
         }
 
         public string Shorten(string url)
@@ -41,6 +45,7 @@ namespace MyPersonalShortner.Lib.Services
             var hash = urlConversion.Encode(id);
             return hash;
         }
+        
         private int Add(string url)
         {
             var longUrl = new LongUrl { Url = url };
@@ -58,6 +63,12 @@ namespace MyPersonalShortner.Lib.Services
             var id = urlConversion.Decode(hash);
             return Get(id);
         }
+
+        public IList<CustomUrl> CustomUrlsByFacebookId(long fbId)
+        {
+            return customUrlRepository.ListByFacebookId(fbId);
+        }
+        
         private string Get(int id)
         {
             var longUrl = longUrlRepository.GetById(id);
@@ -67,11 +78,11 @@ namespace MyPersonalShortner.Lib.Services
         private void StartCustomUrlCache()
         {
             if (customUrlsCache != null) return;
-            customUrlsCache = new Hashtable();
+            customUrlsCache = new ConcurrentDictionary<string, string>();
             var customUrls = customUrlRepository.GetAll();
             foreach (var customUrl in customUrls)
             {
-                customUrlsCache.Add(customUrl.CustomPart, customUrl.Url);
+                customUrlsCache.TryAdd(customUrl.CustomPart, customUrl.Url);
             }
         }
     }

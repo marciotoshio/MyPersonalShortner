@@ -9,6 +9,8 @@ using MyPersonalShortner.Lib.Infrastructure.EntityFramework.DataAccess;
 using MyPersonalShortner.Lib.Domain.UrlConversion;
 using MyPersonalShortner.Lib.Domain.Twitter;
 using MyPersonalShortner.Lib.Infrastructure.TweetSharp;
+using MyPersonalShortner.Lib.Infrastructure.EntityFramework;
+using MyPersonalShortner.Lib.Infrastructure;
 
 namespace MyPersonalShortner.MvcApp
 {
@@ -64,9 +66,7 @@ namespace MyPersonalShortner.MvcApp
             .RegisterType<ICustomUrlRepository, CustomUrlDataAccess>(new HttpContextLifetimeManager<ICustomUrlRepository>())
             .RegisterType<IUrlConversion, Base10ToHash>(new HttpContextLifetimeManager<IUrlConversion>(), new InjectionConstructor(CharsForHash))
             .RegisterType<ITwitterService, TwitterService>(new HttpContextLifetimeManager<ITwitterService>())
-            .RegisterType<ITwitter, TweetSharpImpl>(new InjectionConstructor("5CodmDJ548luW9gkrH0sg", "bnNNQ17QBLMcQ9g5Tosbbr3ps2BHtTE8AvtKZgTmdCM"))
-            .RegisterType <IFacebookUserService, FacebookUserService>(new HttpContextLifetimeManager<IFacebookUserService>())
-            .RegisterType<IFacebookUserRepository, FacebookUserDataAccess>(new HttpContextLifetimeManager<IFacebookUserRepository>());
+            .RegisterType<ITwitter, TweetSharpImpl>(new InjectionConstructor("5CodmDJ548luW9gkrH0sg", "bnNNQ17QBLMcQ9g5Tosbbr3ps2BHtTE8AvtKZgTmdCM"));
 
             return container;
         }

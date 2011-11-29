@@ -6,102 +6,39 @@ using System.Web.Mvc;
 using Facebook.Web.Mvc;
 using MyPersonalShortner.MvcApp.Helpers;
 using MyPersonalShortner.Lib.Services;
+using MyPersonalShortner.Lib.Domain.Url;
 
 namespace MyPersonalShortner.MvcApp.Controllers
 {
     [FacebookAuthorize(LoginUrl="/")]
     public class CustomUrlController : Controller
     {
-        private IFacebookUserService service;
-        public CustomUrlController(IFacebookUserService service)
+        private IShortnerService shortnerService;
+        public CustomUrlController(IShortnerService shortnerService)
         {
-            this.service = service;
+            this.shortnerService = shortnerService;
         }
 
         public ActionResult Index()
         {
-            var currentUser = FacebookHelper.CurrentUser(service);
-            return View(currentUser.CustomUrls);
+            var currentUser = FacebookHelper.CurrentUser();
+            var customUrls = shortnerService.CustomUrlsByFacebookId(currentUser.FacebookId);
+            return View(customUrls);
         }
-
-        //
-        // GET: /CustomUrl/Details/5
-
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        //
-        // GET: /CustomUrl/Create
 
         public ActionResult Create()
         {
             return View();
         } 
 
-        //
-        // POST: /CustomUrl/Create
-
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(CustomUrl customUrl)
         {
             try
             {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-        
-        //
-        // GET: /CustomUrl/Edit/5
- 
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        //
-        // POST: /CustomUrl/Edit/5
-
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
- 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        //
-        // GET: /CustomUrl/Delete/5
- 
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        //
-        // POST: /CustomUrl/Delete/5
-
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
- 
+                var currentUser = FacebookHelper.CurrentUser();
+                customUrl.FacebookUserId = currentUser.FacebookId;
+                shortnerService.AddCustomUrl(customUrl);
                 return RedirectToAction("Index");
             }
             catch

@@ -31,8 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework">
-      <HintPath>..\packages\EntityFramework.4.1.10311.0\lib\EntityFramework.dll</HintPath>
+    <Reference Include="EntityFramework, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.4.2.0.0\lib\net40\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="Hammock">
       <HintPath>..\packages\Hammock.1.2.3\lib\net40\Hammock.dll</HintPath>
@@ -59,7 +60,6 @@
   <ItemGroup>
     <Compile Include="CustomExceptions\ShortnerValidationException.cs" />
     <Compile Include="Domain\Account\FacebookUser.cs" />
-    <Compile Include="Domain\Repositories\IFacebookUserRepository.cs" />
     <Compile Include="Domain\Repositories\ICustomUrlRepository.cs" />
     <Compile Include="Domain\Twitter\AccessToken.cs" />
     <Compile Include="Domain\Twitter\ITwitter.cs" />
@@ -70,7 +70,6 @@
     <Compile Include="Domain\Repositories\ILongUrlRepository.cs" />
     <Compile Include="Domain\Repositories\IRepository.cs" />
     <Compile Include="Domain\Url\LongUrl.cs" />
-    <Compile Include="Infrastructure\EntityFramework\DataAccess\FacebookUserDataAccess.cs" />
     <Compile Include="Infrastructure\EntityFramework\Disposable.cs" />
     <Compile Include="Infrastructure\EntityFramework\EFContext.cs" />
     <Compile Include="Infrastructure\EntityFramework\EFDatabaseFactory.cs" />
@@ -79,7 +78,6 @@
     <Compile Include="Infrastructure\EntityFramework\DataAccess\LongUrlDataAccess.cs" />
     <Compile Include="Infrastructure\TweetSharp\TweetSharpImpl.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\FacebookUserService.cs" />
     <Compile Include="Services\TwitterService.cs" />
     <Compile Include="Services\ShortnerService.cs" />
   </ItemGroup>

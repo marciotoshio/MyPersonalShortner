@@ -7,6 +7,7 @@
         {
             return dataContext ?? (dataContext = new EfContext());
         }
+
         protected override void DisposeCore()
         {
             if (dataContext != null)

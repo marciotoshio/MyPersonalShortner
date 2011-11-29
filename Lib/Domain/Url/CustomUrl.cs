@@ -13,7 +13,6 @@ namespace MyPersonalShortner.Lib.Domain.Url
         [Required]
         [MaxLength(10)]
         public string CustomPart { get; set; }
-
-        public FacebookUser FacebookUser { get; set; }
+        public long FacebookUserId { get; set; }
     }
 }
