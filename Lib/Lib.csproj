@@ -59,7 +59,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CustomExceptions\ShortnerValidationException.cs" />
-    <Compile Include="Domain\Account\FacebookUser.cs" />
     <Compile Include="Domain\Repositories\ICustomUrlRepository.cs" />
     <Compile Include="Domain\Twitter\AccessToken.cs" />
     <Compile Include="Domain\Twitter\ITwitter.cs" />

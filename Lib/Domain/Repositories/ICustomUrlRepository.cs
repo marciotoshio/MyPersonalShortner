@@ -7,6 +7,5 @@ namespace MyPersonalShortner.Lib.Domain.Repositories
     {
         CustomUrl GetByCustomPart(string customPart);
         CustomUrl GetByUrl(string url);
-        IList<CustomUrl> ListByFacebookId(long fbId);
     }
 }

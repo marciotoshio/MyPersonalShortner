@@ -20,10 +20,5 @@ namespace MyPersonalShortner.Lib.Infrastructure.EntityFramework.DataAccess
         {
             return Get(customUrl => customUrl.Url == url);
         }
-
-        public IList<CustomUrl> ListByFacebookId(long fbId)
-        {
-            return List(customUrl => customUrl.FacebookUserId == fbId);
-        }
     }
 }

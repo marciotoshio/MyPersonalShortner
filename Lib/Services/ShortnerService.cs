@@ -13,7 +13,6 @@ namespace MyPersonalShortner.Lib.Services
         void AddCustomUrl(CustomUrl customUrl);
         string Shorten(string url);
         string Expand(string hash);
-        IList<CustomUrl> CustomUrlsByFacebookId(long fbId);
     }
 
     public class ShortnerService : IShortnerService
@@ -64,11 +63,6 @@ namespace MyPersonalShortner.Lib.Services
             return Get(id);
         }
 
-        public IList<CustomUrl> CustomUrlsByFacebookId(long fbId)
-        {
-            return customUrlRepository.ListByFacebookId(fbId);
-        }
-        
         private string Get(int id)
         {
             var longUrl = longUrlRepository.GetById(id);
