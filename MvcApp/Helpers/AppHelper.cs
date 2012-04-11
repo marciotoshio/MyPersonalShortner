@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Web;
+using System.Configuration;
 
 namespace MyPersonalShortner.MvcApp.Helpers
 {
@@ -8,6 +9,16 @@ namespace MyPersonalShortner.MvcApp.Helpers
         public static string GetFullHostAddress()
         {
             return HttpContext.Current.Request.Url.Scheme + "://" + HttpContext.Current.Request.Url.Authority;
+        }
+
+        public static string GetAppName()
+        {
+            return ConfigurationManager.AppSettings["AppName"];
+        }
+
+        public static string GetGoogleAnalyticsCode()
+        {
+            return ConfigurationManager.AppSettings["GACode"];
         }
 
         public static void EnableCors(HttpContext context)
