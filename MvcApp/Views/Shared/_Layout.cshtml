@@ -1,10 +1,5 @@
 ﻿<!doctype html>
-<!--[if lt IE 7 ]> <html class="no-js ie6" lang="en"> <![endif]-->
-<!--[if IE 7 ]>    <html class="no-js ie7" lang="en"> <![endif]-->
-<!--[if IE 8 ]>    <html class="no-js ie8" lang="en"> <![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!-->
-<html class="no-js" lang="en">
-<!--<![endif]-->
+<html>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -13,39 +8,29 @@
     <meta name="author" content="@@marciotoshio">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="/favicon.ico">
-    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/style.css")?v=2">
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/css/bootstrap.min.css")">
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/css/bootstrap-responsive.min.css")">
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Bangers">
-    <script type="text/javascript" src="/Scripts/libs/modernizr-1.7.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/css/style.css")">
 </head>
 <body>
-    <div id="container">
+    <div class="container">
         <header>
-            <div id="login">@{Html.RenderAction("Login", "Account");}</div>
-            @if (IsSectionDefined("Header"))
-            { 
-                @RenderSection("Header")
-            }
-            else
-            { 
-                <h1 class="title">My Personal Shortner</h1>
-            }
+            <h1 class="title">My Personal Shortner</h1>
         </header>
-        <section id="main" role="main">
+        <section id="main">
             @RenderBody()
         </section>
         <footer>
             <span><a href="http://twitter.com/marciotoshio">@@marciotoshio</a></span>
         </footer>
     </div>
-    <!-- eo #container -->
-    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
-    <script type="text/javascript">        window.jQuery || document.write("<script src='/Scripts/libs/jquery-1.5.2.min.js'>\x3C/script>")</script>
-    <script src="@Url.Content("http://ajax.aspnetcdn.com/ajax/mvc/3.0/jquery.unobtrusive-ajax.min.js")" type="text/javascript"></script>
-    <script src="@Url.Content("http://ajax.aspnetcdn.com/ajax/jquery.validate/1.8/jquery.validate.min.js")" type="text/javascript"></script>
-    <script src="@Url.Content("http://ajax.aspnetcdn.com/ajax/mvc/3.0/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
-
-    <script src="@Url.Content("~/Scripts/common.js")" type="text/javascript"></script>
-    <!-- end scripts-->
+    
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/mvc/3.0/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="@Url.Content("~/Scripts/bootstrap.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/shortner.js")" type="text/javascript"></script>
+    
     <script type="text/javascript">
         var _gaq = [["_setAccount", "UA-XXXXX-X"], ["_trackPageview"]]; // Change UA-XXXXX-X to be your site's ID 
         (function (d, t) {

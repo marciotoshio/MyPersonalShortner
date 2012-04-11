@@ -1,0 +1,61 @@
+/**
+ * Primary styles
+ *
+ * Author: @marciotoshio
+ */
+
+body
+{
+	background-color: #eef;
+}
+ 
+h1.title
+{
+    font-family: 'Bangers', serif;
+    margin: 30px auto;
+    text-align: center;
+    font-size: 50pt;
+    color: #fcb;
+    text-shadow: 4px 4px 4px #aaa;
+}
+
+footer
+{
+    border-top: 1px solid #CCC;
+    margin-top: 100px;
+    padding: 10px;
+    text-align: right;    
+}
+
+#main > form 
+{
+    text-align: center;
+    font-size: 18pt;    
+}
+
+#success-message
+{
+    text-align: center;
+    font-size: 50pt;
+}
+
+#error-message
+{
+    text-align: center;
+}
+
+#error-message ul
+{
+    list-style: none;
+    margin: 10px 0;    
+}
+
+#urlnotfound-message
+{
+    text-align: center;
+}
+
+#urlnotfound-message p
+{
+    font-size: 18pt;
+}

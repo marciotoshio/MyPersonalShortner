@@ -3,22 +3,13 @@
 }
 
 @using (Ajax.BeginForm("Shorten", "Main", new { area = "Api" },
-    new AjaxOptions { HttpMethod = "POST", 
-        OnSuccess = "common.HandleShortenSuccess",
-        OnFailure = "common.HandleShortenFailure"
-    }))
+    new AjaxOptions
+    {
+        HttpMethod = "POST",
+        OnSuccess = "shortner.HandleShortenSuccess",
+        OnFailure = "shortner.HandleShortenFailure"
+    }, new { @class = "form-inline"} ))
 {
-    <p>
-        <label for="url">Url: </label> @Html.TextBox("url", "", new { @class = "rounded" }) <input type="submit" value="Shorten" /><br />
-        @Html.ValidationMessage("LongUrl")
-    </p>
+        <label for="url">Url: </label> @Html.TextBox("url", "", new { @class = "span8" }) <button type="submit" value="Shorten" class="btn btn-primary">Shorten</button>
+        <p>@Html.ValidationMessage("LongUrl")</p>
 }
-
-<div id="shorten-url" style="display:none">
-    <h2></h2>
-</div>
-
-<div id="shorten-message" class="rounded" style="display:none">
-    <h2></h2>
-    <ul></ul>
-</div>

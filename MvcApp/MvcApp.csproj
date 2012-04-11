@@ -121,14 +121,17 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\style.css" />
+    <Content Include="Content\css\bootstrap-responsive.min.css" />
+    <Content Include="Content\css\bootstrap.min.css" />
+    <Content Include="Content\css\style.css" />
+    <Content Include="Content\img\glyphicons-halflings-white.png" />
+    <Content Include="Content\img\glyphicons-halflings.png" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="humans.txt" />
     <Content Include="robots.txt" />
-    <Content Include="Scripts\common.js" />
-    <Content Include="Scripts\libs\jquery-1.5.2.min.js" />
-    <Content Include="Scripts\libs\modernizr-1.7.min.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\shortner.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
