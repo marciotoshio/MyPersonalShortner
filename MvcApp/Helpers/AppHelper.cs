@@ -6,19 +6,34 @@ namespace MyPersonalShortner.MvcApp.Helpers
 {
     public class AppHelper
     {
+        public static string AppName
+        {
+            get { return ConfigurationManager.AppSettings["AppName"]; }
+        }
+
+        public static string TwitterConsumerKey
+        {
+            get { return ConfigurationManager.AppSettings["TwitterConsumerKey"]; }
+        }
+
+        public static string TwitterConsumerSecret
+        {
+            get { return ConfigurationManager.AppSettings["TwitterConsumerSecret"]; }
+        }
+
+        public static string GoogleAnalyticsCode
+        {
+            get { return ConfigurationManager.AppSettings["GACode"]; }
+        }
+
+        public static string CharsForHash
+        {
+            get { return "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"; }
+        }
+
         public static string GetFullHostAddress()
         {
             return HttpContext.Current.Request.Url.Scheme + "://" + HttpContext.Current.Request.Url.Authority;
-        }
-
-        public static string GetAppName()
-        {
-            return ConfigurationManager.AppSettings["AppName"];
-        }
-
-        public static string GetGoogleAnalyticsCode()
-        {
-            return ConfigurationManager.AppSettings["GACode"];
         }
 
         public static void EnableCors(HttpContext context)

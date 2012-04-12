@@ -1,8 +1,4 @@
-﻿@{
-    ViewBag.Title = "My Personal Shortner";
-}
-
-@using (Ajax.BeginForm("Shorten", "Main", new { area = "Api" },
+﻿@using (Ajax.BeginForm("Shorten", "Main", new { area = "Api" },
     new AjaxOptions
     {
         HttpMethod = "POST",

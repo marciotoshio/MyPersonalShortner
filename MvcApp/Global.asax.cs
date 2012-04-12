@@ -1,9 +1,7 @@
 ﻿using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
-using Microsoft.Practices.Unity;
 using MyPersonalShortner.Lib.Services;
-using MyPersonalShortner.MvcApp.IoC;
 using MyPersonalShortner.Lib.Domain.Repositories;
 using MyPersonalShortner.Lib.Infrastructure.EntityFramework.DataAccess;
 using MyPersonalShortner.Lib.Domain.UrlConversion;
@@ -11,6 +9,7 @@ using MyPersonalShortner.Lib.Domain.Twitter;
 using MyPersonalShortner.Lib.Infrastructure.TweetSharp;
 using MyPersonalShortner.Lib.Infrastructure.EntityFramework;
 using MyPersonalShortner.Lib.Infrastructure;
+using MyPersonalShortner.MvcApp.Helpers;
 
 namespace MyPersonalShortner.MvcApp
 {
@@ -47,28 +46,6 @@ namespace MyPersonalShortner.MvcApp
 
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
-
-            DependencyResolver.SetResolver(new UnityDependencyResolver(GetUnityContainer()));
-        }
-
-        private static string CharsForHash
-        {
-            get { return "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"; }
-        }
-
-        private static IUnityContainer GetUnityContainer()
-        {
-            //Create UnityContainer          
-            var container = new UnityContainer()
-            .RegisterType<IControllerActivator, CustomControllerActivator>()
-            .RegisterType<IShortnerService, ShortnerService>(new HttpContextLifetimeManager<IShortnerService>())
-            .RegisterType<ILongUrlRepository, LongUrlDataAccess>(new HttpContextLifetimeManager<ILongUrlRepository>())
-            .RegisterType<ICustomUrlRepository, CustomUrlDataAccess>(new HttpContextLifetimeManager<ICustomUrlRepository>())
-            .RegisterType<IUrlConversion, Base10ToHash>(new HttpContextLifetimeManager<IUrlConversion>(), new InjectionConstructor(CharsForHash))
-            .RegisterType<ITwitterService, TwitterService>(new HttpContextLifetimeManager<ITwitterService>())
-            .RegisterType<ITwitter, TweetSharpImpl>(new InjectionConstructor("5CodmDJ548luW9gkrH0sg", "bnNNQ17QBLMcQ9g5Tosbbr3ps2BHtTE8AvtKZgTmdCM"));
-
-            return container;
-        }
+        }        
     }
 }
