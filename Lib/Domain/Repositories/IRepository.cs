@@ -10,6 +10,7 @@ namespace MyPersonalShortner.Lib.Domain.Repositories
         T Get(Func<T, bool> where);
         IEnumerable<T> GetAll();
         IList<T> List(Func<T, bool> where);
+        void Remove(int id);
 
         void Save();
     }

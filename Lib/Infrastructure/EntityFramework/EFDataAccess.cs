@@ -48,6 +48,12 @@ namespace MyPersonalShortner.Lib.Infrastructure.EntityFramework
             return dbset.ToList();
         }
 
+        public void Remove(int id)
+        {
+            var entity = GetById(id);
+            dbset.Remove(entity);
+        }
+
         public virtual void Save()
         {
             try

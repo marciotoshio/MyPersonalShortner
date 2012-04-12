@@ -1,0 +1,91 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using MyPersonalShortner.Lib.Domain.Repositories;
+using MyPersonalShortner.Lib.Domain.Url;
+
+namespace MyPersonalShortner.MvcApp.Areas.CustomUrlAdmin.Controllers
+{
+    public class CustomUrlController : Controller
+    {
+        private ICustomUrlRepository repo;
+        public CustomUrlController(ICustomUrlRepository repo)
+        {
+            this.repo = repo;
+        }
+             
+        public ActionResult Index()
+        {
+            var customUrls = repo.GetAll();
+            return View(customUrls);
+        }
+
+        public ActionResult Create()
+        {
+            return View();
+        } 
+
+        [HttpPost]
+        public ActionResult Create(CustomUrl customUrl)
+        {
+            try
+            {
+                repo.Add(customUrl);
+                repo.Save();
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View(customUrl);
+            }
+        }
+        
+        public ActionResult Edit(int id)
+        {
+            var customUrl = repo.GetById(id);
+            return View(customUrl);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(int id, CustomUrl customUrl)
+        {
+            try
+            {
+                var customUrlToUpdate = repo.GetById(id);
+                customUrlToUpdate.CustomPart = customUrl.CustomPart;
+                customUrlToUpdate.Url = customUrl.Url;
+                repo.Save();
+
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+ 
+        public ActionResult Delete(int id)
+        {
+            var customUrl = repo.GetById(id);
+            return View(customUrl);
+        }
+
+        [HttpPost]
+        public ActionResult Delete(int id, CustomUrl customUrl)
+        {
+            try
+            {
+                repo.Remove(id);
+                repo.Save();
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+    }
+}
