@@ -1,0 +1,10 @@
+﻿@{
+    ViewBag.Title = "Login";
+}
+
+@using (Html.BeginForm("Login", "Auth", FormMethod.Post, new { @class = "form-horizontal"} ))
+{ 
+    <label for="username">Username:</label> <input id="username" type="text" name="username" />
+    <label for="password">Password:</label> <input id="password" type="password" name="password" />
+    <button type="submit" class="btn btn-primary">Login</button>
+}

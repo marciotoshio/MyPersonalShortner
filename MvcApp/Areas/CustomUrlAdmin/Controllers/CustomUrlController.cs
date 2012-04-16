@@ -8,6 +8,7 @@ using MyPersonalShortner.Lib.Domain.Url;
 
 namespace MyPersonalShortner.MvcApp.Areas.CustomUrlAdmin.Controllers
 {
+    [Authorize]
     public class CustomUrlController : Controller
     {
         private ICustomUrlRepository repo;
@@ -42,31 +43,6 @@ namespace MyPersonalShortner.MvcApp.Areas.CustomUrlAdmin.Controllers
             }
         }
         
-        public ActionResult Edit(int id)
-        {
-            var customUrl = repo.GetById(id);
-            return View(customUrl);
-        }
-
-        [HttpPost]
-        public ActionResult Edit(int id, CustomUrl customUrl)
-        {
-            try
-            {
-                var customUrlToUpdate = repo.GetById(id);
-                customUrlToUpdate.CustomPart = customUrl.CustomPart;
-                customUrlToUpdate.Url = customUrl.Url;
-                repo.Save();
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
- 
         public ActionResult Delete(int id)
         {
             var customUrl = repo.GetById(id);
