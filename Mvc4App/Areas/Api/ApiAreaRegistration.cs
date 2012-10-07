@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace Mvc4App.Areas.Api
+namespace MvcApp.Areas.Api
 {
     public class ApiAreaRegistration : AreaRegistration
     {
