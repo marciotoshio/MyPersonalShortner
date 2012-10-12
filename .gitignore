@@ -12,3 +12,4 @@ TestResults
 Deploy
 _ReSharper*
 packages
+Mvc4App/Web.Release.config
