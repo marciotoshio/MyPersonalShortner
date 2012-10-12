@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace MvcApp.Areas.Api
+namespace MyPersonalShortner.MvcApp.Areas.Api
 {
     public class ApiAreaRegistration : AreaRegistration
     {
@@ -14,12 +14,6 @@ namespace MvcApp.Areas.Api
 
         public override void RegisterArea(AreaRegistrationContext context)
         {
-            context.MapRoute(
-                "Share",
-                "Api/Share/{action}",
-                new { controller = "Share" }
-            );
-
             context.MapRoute(
                 "Api_default",
                 "Api/{controller}/{action}/{id}",

@@ -1,9 +1,9 @@
-﻿using System;
-using System.Web.Mvc;
+﻿using MyPersonalShortner.Lib.CustomExceptions;
 using MyPersonalShortner.Lib.Services;
-using MyPersonalShortner.MvcApp.Areas.Api.DTO;
-using MyPersonalShortner.Lib.CustomExceptions;
+using MyPersonalShortner.MvcApp.Areas.Api.Models;
 using MyPersonalShortner.MvcApp.Helpers;
+using System;
+using System.Web.Mvc;
 
 namespace MyPersonalShortner.MvcApp.Areas.Api.Controllers
 {
@@ -34,30 +34,30 @@ namespace MyPersonalShortner.MvcApp.Areas.Api.Controllers
             {
                 var hash = service.Shorten(url.Trim());
                 result = new ApiShortenResult
-                             {
-                                 Success = true,
-                                 Message = "success",
-                                 Hash = hash,
-                                 LongUrl = url
-                             };
+                {
+                    Success = true,
+                    Message = "success",
+                    Hash = hash,
+                    LongUrl = url
+                };
             }
             catch (ShortnerValidationException ex)
             {
-                result = new ApiErrorResult 
-                            { 
-                                Success = false,
-                                Errors = ex.Errors,
-                                Message = ex.Message
-                            };
+                result = new ApiErrorResult
+                {
+                    Success = false,
+                    Errors = ex.Errors,
+                    Message = ex.Message
+                };
                 ResponseError();
             }
             catch (Exception ex)
             {
-                result = new ApiResult 
-                            {
-                                Success = false,
-                                Message = ex.Message
-                            };
+                result = new ApiResult
+                {
+                    Success = false,
+                    Message = ex.Message
+                };
                 ResponseError();
             }
             return Json(result, "application/json", JsonRequestBehavior.AllowGet);

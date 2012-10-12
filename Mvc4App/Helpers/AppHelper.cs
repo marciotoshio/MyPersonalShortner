@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Web;
 using System.Configuration;
+using System.Web;
 
 namespace MyPersonalShortner.MvcApp.Helpers
 {

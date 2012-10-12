@@ -1,7 +1,6 @@
-﻿using System.Runtime.Serialization;
-using MyPersonalShortner.Lib.Domain.Twitter;
+﻿using MyPersonalShortner.Lib.Domain.Twitter;
 
-namespace MyPersonalShortner.MvcApp.Areas.Api.DTO
+namespace MyPersonalShortner.MvcApp.Areas.Api.Models
 {
     public class ApiTwitterResult : ApiResult
     {

@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using MyPersonalShortner.Lib.Domain.Url;
+using NUnit.Framework;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using MyPersonalShortner.Lib.Domain.Url;
-using NUnit.Framework;
 
 namespace MyPersonalShortner.Tests.Domain
 {

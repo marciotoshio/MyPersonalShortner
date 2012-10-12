@@ -1,22 +1,20 @@
-[assembly: WebActivator.PreApplicationStartMethod(typeof(MvcApp.App_Start.NinjectWebCommon), "Start")]
-[assembly: WebActivator.ApplicationShutdownMethodAttribute(typeof(MvcApp.App_Start.NinjectWebCommon), "Stop")]
+[assembly: WebActivator.PreApplicationStartMethod(typeof(MyPersonalShortner.MvcApp.App_Start.NinjectWebCommon), "Start")]
+[assembly: WebActivator.ApplicationShutdownMethodAttribute(typeof(MyPersonalShortner.MvcApp.App_Start.NinjectWebCommon), "Stop")]
 
-namespace MvcApp.App_Start
+namespace MyPersonalShortner.MvcApp.App_Start
 {
-    using System;
-    using System.Web;
-
     using Microsoft.Web.Infrastructure.DynamicModuleHelper;
-
-    using Ninject;
-    using Ninject.Web.Common;
-    using MyPersonalShortner.Lib.Services;
     using MyPersonalShortner.Lib.Domain.Repositories;
+    using MyPersonalShortner.Lib.Domain.Twitter;
     using MyPersonalShortner.Lib.Domain.UrlConversion;
     using MyPersonalShortner.Lib.Infrastructure.EntityFramework.DataAccess;
-    using MyPersonalShortner.Lib.Domain.Twitter;
     using MyPersonalShortner.Lib.Infrastructure.TweetSharp;
+    using MyPersonalShortner.Lib.Services;
     using MyPersonalShortner.MvcApp.Helpers;
+    using Ninject;
+    using Ninject.Web.Common;
+    using System;
+    using System.Web;
 
     public static class NinjectWebCommon 
     {

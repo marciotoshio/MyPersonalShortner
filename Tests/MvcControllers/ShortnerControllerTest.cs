@@ -1,8 +1,8 @@
-﻿using System.Web.Mvc;
-using NUnit.Framework;
-using MyPersonalShortner.MvcApp.Controllers;
-using Moq;
+﻿using Moq;
 using MyPersonalShortner.Lib.Services;
+using MyPersonalShortner.MvcApp.Controllers;
+using NUnit.Framework;
+using System.Web.Mvc;
 
 namespace MyPersonalShortner.Tests.MvcControllers
 {

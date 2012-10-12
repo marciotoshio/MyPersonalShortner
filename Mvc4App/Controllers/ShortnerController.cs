@@ -1,6 +1,6 @@
-﻿using System;
+﻿using MyPersonalShortner.Lib.Services;
+using System;
 using System.Web.Mvc;
-using MyPersonalShortner.Lib.Services;
 
 namespace MyPersonalShortner.MvcApp.Controllers
 {

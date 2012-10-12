@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
-using System.Runtime.Serialization;
 
-namespace MyPersonalShortner.MvcApp.Areas.Api.DTO
+namespace MyPersonalShortner.MvcApp.Areas.Api.Models
 {
     public class ApiErrorResult : ApiResult
     {

@@ -1,7 +1,6 @@
-﻿using System.Runtime.Serialization;
-using MyPersonalShortner.MvcApp.Helpers;
+﻿using MyPersonalShortner.MvcApp.Helpers;
 
-namespace MyPersonalShortner.MvcApp.Areas.Api.DTO
+namespace MyPersonalShortner.MvcApp.Areas.Api.Models
 {
     public class ApiShortenResult : ApiResult
     {

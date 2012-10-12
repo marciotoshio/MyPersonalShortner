@@ -1,5 +1,5 @@
-﻿using NUnit.Framework;
-using MyPersonalShortner.Lib.Domain.UrlConversion;
+﻿using MyPersonalShortner.Lib.Domain.UrlConversion;
+using NUnit.Framework;
 
 namespace MyPersonalShortner.Tests.Domain
 {
