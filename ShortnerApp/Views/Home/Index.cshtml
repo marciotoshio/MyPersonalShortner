@@ -1,0 +1,7 @@
+﻿@model MyPersonalShortner.ShortnerApp.Models.ShortnerUrl
+
+<form id="shortner-form" action="/api/urlshortner" class="form-inline" method="post">
+	<label for="url">Url: </label>
+	@Html.TextBoxFor(model => model.Url, new { @class = "span8" }) <button type="submit" value="Shorten" class="btn btn-primary">Shorten</button>
+	<p>@Html.ValidationMessageFor(model => model.Url)</p>
+</form>

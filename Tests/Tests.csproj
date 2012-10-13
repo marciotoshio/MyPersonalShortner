@@ -72,9 +72,9 @@
       <Project>{3D393D09-5ACE-4D7D-A0A1-3E8E93234B0F}</Project>
       <Name>Lib</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Mvc4App\Mvc4App.csproj">
-      <Project>{994b5209-0e2f-4270-9333-bd3a7e7778ab}</Project>
-      <Name>Mvc4App</Name>
+    <ProjectReference Include="..\ShortnerApp\ShortnerApp.csproj">
+      <Project>{7f592d86-92ca-4015-9bac-cb916ab61b82}</Project>
+      <Name>ShortnerApp</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

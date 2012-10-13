@@ -1,6 +1,6 @@
 ﻿using Moq;
 using MyPersonalShortner.Lib.Services;
-using MyPersonalShortner.MvcApp.Controllers;
+using MyPersonalShortner.ShortnerApp.Controllers;
 using NUnit.Framework;
 using System.Web.Mvc;
 

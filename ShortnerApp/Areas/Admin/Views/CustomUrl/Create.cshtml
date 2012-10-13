@@ -1,0 +1,29 @@
+﻿@model MyPersonalShortner.Lib.Domain.Url.CustomUrl
+
+@{
+	ViewBag.Title = " - Create";
+}
+
+@using (Html.BeginForm())
+{
+	@Html.ValidationSummary(true)
+	<fieldset>
+		<legend>Create new custom url</legend>
+
+		@Html.LabelFor(model => model.Url)
+		@Html.EditorFor(model => model.Url)
+		@Html.ValidationMessageFor(model => model.Url)
+
+		@Html.LabelFor(model => model.CustomPart)
+		@Html.EditorFor(model => model.CustomPart)
+		@Html.ValidationMessageFor(model => model.CustomPart)
+
+		<p>
+			<button type="submit" class="btn btn-primary">Create</button>
+		</p>
+	</fieldset>
+}
+
+<div>
+	@Html.ActionLink("Back to List", "Index")
+</div>

@@ -1,0 +1,16 @@
+﻿@model MyPersonalShortner.ShortnerApp.Models.User
+
+@{
+	ViewBag.Title = " - Login";
+}
+
+@using (Html.BeginForm())
+{ 
+	@Html.LabelFor(model => model.UserName) 
+	@Html.TextBoxFor(model => model.UserName)
+    
+	@Html.LabelFor(model => model.Password) 
+	@Html.PasswordFor(model => model.Password)
+    
+	<button type="submit" class="btn btn-primary">Login</button>
+}
