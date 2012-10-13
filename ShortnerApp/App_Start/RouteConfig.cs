@@ -9,6 +9,9 @@ namespace MyPersonalShortner.ShortnerApp
 		{
 			routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+			routes.MapRoute("Home", "", new { controller = "Home", action = "Index" });
+			routes.MapRoute("Shortner", "{hash}", new { controller = "Shortner", action = "Index", hash = UrlParameter.Optional });
+
 			routes.MapRoute(
 					name: "Default",
 					url: "{controller}/{action}/{id}",
